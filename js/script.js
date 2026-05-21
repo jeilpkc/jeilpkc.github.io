@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
             `
         },
         {
-            name: "영흥숲푸르지오파크비엔아파트",
+            name: "영흥숲푸르지오파크비엔",
             lat: 37.2636399,
-            lng: 127.0646109,
+            lng: 127.06768,
             isCenter: false,
             popupContent: `
                 <div class="map-popup">
