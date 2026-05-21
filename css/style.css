@@ -373,3 +373,29 @@ footer .disclaimer {
     font-size: 0.9rem;
     font-weight: 500;
 }
+
+/* 버튼을 flex 박스로 만들어 아이콘과 텍스트 정렬 */
+.join-btn.kakao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* 아이콘과 글자 사이 간격 */
+  background-color: #FEE500; /* 카카오톡 브랜드 색상 */
+  color: #3C1E1E; /* 카카오톡 텍스트 색상 */
+  text-decoration: none;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+/* 아이콘 크기 조절 */
+.kakao-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.join-btn.kakao:hover {
+  background-color: #FADA0A;
+}
