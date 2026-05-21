@@ -300,3 +300,76 @@ footer .disclaimer {
     opacity: 0.7;
     line-height: 1.5;
 }
+
+/* 커뮤니티 */
+.community-hero {
+    background-color: #f8f9fa;
+    padding: 60px 0 40px;
+    text-align: center;
+}
+.community-hero h2 {
+    font-size: 2.2rem;
+    color: #1a365d;
+    margin-bottom: 10px;
+}
+.community-hero p {
+    color: #4a5568;
+    font-size: 1.1rem;
+}
+.community-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+.map-image-box {
+    text-align: center;
+    margin-bottom: 50px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.map-image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.floor-guide {
+    margin-top: 40px;
+}
+.floor-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-left: 5px solid #3182ce;
+}
+.floor-badge {
+    display: inline-block;
+    background: #3182ce;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+.floor-card h4 {
+    font-size: 1.4rem;
+    color: #2d3748;
+    margin-bottom: 15px;
+}
+.facility-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.facility-tag {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
