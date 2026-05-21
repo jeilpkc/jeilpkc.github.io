@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const locations = [
         {
             name: "광교풍경채어바니티",
-            lat: 37.270402,
-            lng: 127.069423,
+            lat: 37.270702,
+            lng: 127.070723,
             isCenter: true,
             popupContent: `
                 <div class="map-popup">
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "광교호반베르디움",
-            lat: 37.271663,
-            lng: 126.9053607,
+            lat: 37.272663,
+            lng: 127.0563607,
             isCenter: false,
             popupContent: `
                 <div class="map-popup">
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },        
         {
             name: "광교아이파크",
-            lat: 37.273087,
+            lat: 37.274087,
             lng: 127.061219,
             isCenter: false,
             popupContent: `
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "광교더샵",
-            lat: 37.270696,
+            lat: 37.271696,
             lng: 127.061016,
             isCenter: false,
             popupContent: `
