@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. 지도 초기화 및 기본 위치 설정 (광교풍경채어바니티 부근 중심)
     // 위도: 37.2715, 경도: 127.0655 / 확대 배율: 15
-    const map = L.map('map').setView([37.2715, 127.0655], 15);
+    const map = L.map('map').setView([37.2757148, 127.0714941], 15);
 
     // 3. OpenStreetMap 타일 레이어 추가
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -26,11 +26,26 @@ document.addEventListener('DOMContentLoaded', () => {
             popupContent: `
                 <div class="map-popup">
                     <h5>광교풍경채어바니티</h5>
-                    <p>경기도 용인시 기흥구 영덕동</p>
+                    <p>입주: <strong>2023년 10월</strong></p>
+                    <p>평형: <strong>34평 / 41평</strong></p>
                     <span class="center-tag">기준 단지</span>
                 </div>
             `
         },
+        {
+            name: "광교호반베르디움",
+            lat: 37.271663,
+            lng: 126.9053607,
+            isCenter: false,
+            popupContent: `
+                <div class="map-popup">
+                    <h5>광교호반베르디움</h5>
+                    <p>입주: <strong>2014년 6월</strong></p>
+                    <p>평형: <strong>34평</strong></p>
+                    <p>시세: <span class="price">12.9억</span></p>
+                </div>
+            `
+        },        
         {
             name: "광교아이파크",
             lat: 37.273087,
@@ -39,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popupContent: `
                 <div class="map-popup">
                     <h5>광교아이파크</h5>
+                    <p>입주: <strong>2018년 9월</strong></p>
                     <p>평형: <strong>38평</strong></p>
                     <p>시세: <span class="price">15.2억</span></p>
                 </div>
@@ -52,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popupContent: `
                 <div class="map-popup">
                     <h5>광교더샵</h5>
+                    <p>입주: <strong>2018년 8월</strong></p>
                     <p>평형: <strong>37평</strong></p>
                     <p>시세: <span class="price">13.4억</span></p>
                 </div>
@@ -65,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popupContent: `
                 <div class="map-popup">
                     <h5>영흥숲푸르지오파크비엔</h5>
+                    <p>입주: <strong>2023년 6월</strong></p>
                     <p>평형: <strong>33평</strong></p>
                     <p>시세: <span class="price">10억</span></p>
                 </div>
@@ -78,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popupContent: `
                 <div class="map-popup">
                     <h5>광교중흥S클래스</h5>
+                    <p>입주: <strong>2019년 5월</strong></p>
                     <p>평형: <strong>35평</strong></p>
                     <p>시세: <span class="price">17.6억</span></p>
                 </div>
