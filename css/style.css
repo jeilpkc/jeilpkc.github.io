@@ -49,6 +49,17 @@ header {
     color: #2b3a4a;
 }
 
+.logo a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.logo a:hover {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
 .logo span {
     color: #0066cc;
     font-size: 1.1rem;
