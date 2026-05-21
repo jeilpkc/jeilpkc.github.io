@@ -1,30 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jeilpkc | Home</title>
+    <title>영덕동 광교풍경채어바니티 투명 공유방</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <nav>
-        <div class="container">
-            <a href="index.html" class="logo">jeilpkc</a>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="container">
-            <h1>Welcome to my digital space.</h1>
-            <p>I'm a developer and writer. This site is built with pure HTML and CSS.</p>
-            <a href="blog.html" class="btn">Read my Blog</a>
+    <!-- 헤더 영역 -->
+    <header>
+        <div class="container header-container">
+            <h1 class="logo">광교풍경채어바니티 <span>투명 공유방</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#intro">소개</a></li>
+                    <li><a href="#developments">주요 호재</a></li>
+                    <li><a href="#suggestions">동네 개선 제안</a></li>
+                    <li><a href="#join">참여 안내</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
+
+    <!-- 히어로 섹션 -->
+    <section id="intro" class="hero">
+        <div class="container hero-content">
+            <h2>더 살기 좋은 우리 동네를 위한 한 걸음</h2>
+            <p>영덕동 광교풍경채어바니티 주변의 신뢰할 수 있는 정보를 공유하고,<br>이웃들과 소통하여 주거 환경 개선 방안을 투명하게 모색하는 공간입니다.</p>
+            <a href="#developments" class="btn">주요 개발 호재 확인하기</a>
+        </div>
+    </section>
+
+    <!-- 주요 호재 섹션 -->
+    <section id="developments" class="developments-section">
+        <div class="container">
+            <h3 class="section-title">주변 주요 개발 호재</h3>
+            <p class="section-subtitle">단지 인근의 가치를 높이고 정주 환경을 개선할 핵심 변화 소식입니다.</p>
+            
+            <div class="card-grid">
+                <!-- 호재 카드 1: 동탄인덕원선 -->
+                <div class="card">
+                    <div class="card-icon">🚇</div>
+                    <h4>동탄인덕원선 (흥덕역 예정)</h4>
+                    <p>인덕원과 동탄을 연결하는 동탄인덕원선 철도 사업으로 단지 주변 교통 네트워크가 개선됩니다. 신수원선(흥덕역)을 통해 서울 강남권 및 경기 남부 주요 거점과의 대중교통 접근성이 크게 높아집니다.</p>
+                    <span class="tag">교통 호재</span>
+                </div>
+
+                <!-- 호재 카드 2: 신광교 클라우드시티 -->
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h4>신광교 클라우드시티</h4>
+                    <p>인근 아모레퍼시픽 이전 부지에 조성되는 대규모 하이엔드 워크에디션 지식산업센터입니다. 양질의 일자리가 창출되는 직주근접 환경을 바탕으로 활기찬 상권과 탄탄한 생활 인프라의 확충이 예상됩니다.</p>
+                    <span class="tag">산업·인프라 호재</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 우리 동네 개선 제안방 (동적 기능 추가) -->
+    <section id="suggestions" class="suggestions-section">
+        <div class="container">
+            <h3 class="section-title">우리 동네 개선 제안방</h3>
+            <p class="section-subtitle">가로등 정비, 보행 환경 개선 등 살기 좋은 주변을 만들기 위한 의견을 나누어 주세요.</p>
+            
+            <div class="suggestion-box">
+                <form id="suggestion-form">
+                    <input type="text" id="user-name" placeholder="닉네임" required>
+                    <textarea id="user-comment" placeholder="제안 내용을 상세하게 적어주세요. (예: 아파트 주변 도로 보도블록 정비 필요 등)" required rows="4"></textarea>
+                    <button type="submit" class="btn">제안 제출하기</button>
+                </form>
+
+                <div class="comment-list-container">
+                    <h4>등록된 제안 및 건의 사항 (<span id="comment-count">0</span>)</h4>
+                    <div id="comment-list" class="comment-list">
+                        <!-- 작성한 댓글이 들어갑니다 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 참여 안내 및 링크 -->
+    <section id="join" class="join-section">
+        <div class="container">
+            <h3 class="section-title">소통 공유방 참여 방법</h3>
+            <p class="section-subtitle">더 신속하고 자세한 정보 공유를 위해 소통 창구에 참여해 주시기 바랍니다.</p>
+            <div class="join-buttons">
+                <!-- 오픈채팅 링크 주소 삽입 가능 -->
+                <a href="#" target="_blank" class="btn join-btn kakao">카카오톡 투명 공유방 입장</a>
+                <a href="#" target="_blank" class="btn join-btn band">네이버 밴드 소통방 입장</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 영덕동 광교풍경채어바니티 투명 공유방. All rights reserved.</p>
+            <p class="disclaimer">본 사이트는 공식 입주자대표회의와 무관하며, 투명한 정보 공유와 이웃 간 자발적인 주거 환경 개선 제안을 돕기 위해 운영됩니다.</p>
+        </div>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>
