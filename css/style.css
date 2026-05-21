@@ -193,84 +193,7 @@ section {
     font-weight: 600;
 }
 
-/* 제안 및 건의 사항 폼 */
-.suggestions-section {
-    background-color: #ffffff;
-    border-top: 1px solid #e9ecef;
-    border-bottom: 1px solid #e9ecef;
-}
 
-.suggestion-box {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-#suggestion-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-#suggestion-form input, 
-#suggestion-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    font-size: 0.95rem;
-}
-
-#suggestion-form input:focus, 
-#suggestion-form textarea:focus {
-    outline: none;
-    border-color: #0066cc;
-}
-
-.comment-list-container h4 {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-    color: #343a40;
-    border-bottom: 2px solid #e9ecef;
-    padding-bottom: 8px;
-}
-
-.comment-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.comment-item {
-    background-color: #f8f9fa;
-    border-left: 4px solid #0066cc;
-    padding: 15px;
-    border-radius: 0 5px 5px 0;
-    position: relative;
-}
-
-.comment-item .meta {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #495057;
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.comment-item .text {
-    font-size: 0.95rem;
-    color: #333;
-    white-space: pre-line;
-}
-
-.comment-item .delete-btn {
-    cursor: pointer;
-    color: #dc3545;
-    font-size: 0.8rem;
-    background: none;
-    border: none;
-}
 
 /* 참여 안내 */
 .join-section {
@@ -307,6 +230,59 @@ section {
 
 .join-btn.band:hover {
     background-color: #1e9d43;
+}
+
+/* 주변 단지 시세 지도 섹션 */
+.map-section {
+    background-color: #ffffff;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+    padding: 80px 0;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    z-index: 1; /* 헤더 메뉴와 겹침 방지 */
+}
+
+/* 지도 팝업 내부 스타일 커스텀 */
+.leaflet-popup-content-wrapper {
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.map-popup h5 {
+    font-size: 1rem;
+    margin: 0 0 6px 0;
+    color: #1a252f;
+    font-weight: 700;
+}
+
+.map-popup p {
+    font-size: 0.85rem;
+    color: #495057;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.map-popup .price {
+    font-weight: 700;
+    color: #0066cc;
+}
+
+.map-popup .center-tag {
+    display: inline-block;
+    background-color: #e84118;
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-weight: 600;
 }
 
 /* 푸터 */

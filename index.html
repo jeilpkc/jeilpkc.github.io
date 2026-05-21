@@ -13,7 +13,8 @@
   <meta property="og:description" content="동탄인덕원선, 클라우드시티 등 우리 동네 호재와 개선 사항을 함께 나눕니다.">
   <meta property="og:image" content="https://jeilpkc.github.io/assets/001-apartment.jpg">
   <title>영덕동 광교풍경채어바니티 투명 공유방</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css?v=1.0">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-49TQZPEJB3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -31,7 +32,7 @@
         <ul>
           <li><a href="#intro">소개</a></li>
           <li><a href="#developments">주요 호재</a></li>
-          <li><a href="#suggestions">동네 개선 제안</a></li>
+          <li><a href="#map-section">시세 지도</a></li>
           <li><a href="#join">참여 안내</a></li>
         </ul>
       </nav>
@@ -51,7 +52,7 @@
       <div class="card-grid">
         <div class="card">
           <div class="card-icon">🚇</div>
-          <h4>동탄인덕원선 (흥덕역 예정)</h4>
+          <h4>동탄인덕원선 (흥덕역/원천역 예정)</h4>
           <p>인덕원과 동탄을 연결하는 동탄인덕원선 철도 사업으로 단지 주변 교통 네트워크가 개선됩니다. 신수원선(흥덕역)을 통해 서울 강남권 및 경기 남부 주요 거점과의 대중교통 접근성이 크게 높아집니다.
           </p>
           <span class="tag">교통 호재</span>
@@ -66,6 +67,15 @@
       </div>
     </div>
   </section>
+
+  <section id="map-section" class="map-section">
+    <div class="container">
+      <h3 class="section-title">주변 단지 시세 지도</h3>
+      <p class="section-subtitle">광교풍경채어바니티 인근 주요 단지의 평형별 시세 비교 데이터입니다.</p>
+      <div id="map"></div>
+    </div>
+  </section>
+
   <section id="join" class="join-section">
     <div class="container">
       <h3 class="section-title">소통 공유방 참여 방법</h3>
@@ -81,8 +91,9 @@
       <p class="disclaimer">본 사이트는 공식 입주자대표회의와 무관하며, 투명한 정보 공유와 이웃 간 자발적인 주거 환경 개선 제안을 돕기 위해 운영됩니다.</p>
     </div>
   </footer>
-
-  <script src="js/script.js"></script>
+  
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/script.js?v=1.0"></script>
 </body>
 
 </html>

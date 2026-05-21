@@ -1,94 +1,98 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const suggestionForm = document.getElementById('suggestion-form');
-    const commentList = document.getElementById('comment-list');
-    const commentCount = document.getElementById('comment-count');
-
-    // 로컬 스토리지에서 의견 데이터 불러오기
-    let suggestions = JSON.parse(localStorage.getItem('neighborhoodSuggestions')) || [];
-
-    // 의견 렌더링 함수
-    function renderSuggestions() {
-        commentList.innerHTML = '';
-        commentCount.textContent = suggestions.length;
-
-        if (suggestions.length === 0) {
-            commentList.innerHTML = '<p style="text-align:center; color:#868e96; padding: 20px 0;">작성된 의견이 아직 없습니다. 첫 제안을 남겨주세요!</p>';
-            return;
-        }
-
-        suggestions.forEach((item, index) => {
-            const commentItem = document.createElement('div');
-            commentItem.className = 'comment-item';
-            
-            commentItem.innerHTML = `
-                <div class="meta">
-                    <span>${escapeHTML(item.name)} <span style="font-weight:normal; color:#868e96; margin-left:10px;">${item.date}</span></span>
-                    <button class="delete-btn" data-index="${index}">삭제</button>
-                </div>
-                <div class="text">${escapeHTML(item.comment)}</div>
-            `;
-            commentList.appendChild(commentItem);
-        });
-
-        // 삭제 버튼 이벤트 바인딩
-        const deleteButtons = document.querySelectorAll('.delete-btn');
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', deleteSuggestion);
-        });
-    }
-
-    // HTML escape 처리 (보안 대책)
-    function escapeHTML(str) {
-        return str.replace(/[&<>'"]/g, 
-            tag => ({
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                "'": '&#39;',
-                '"': '&quot;'
-            }[tag] || tag)
-        );
-    }
-
-    // 의견 제출 이벤트 처리
-    suggestionForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const nameInput = document.getElementById('user-name');
-        const commentInput = document.getElementById('user-comment');
-
-        const newSuggestion = {
-            name: nameInput.value.trim(),
-            comment: commentInput.value.trim(),
-            date: new Date().toLocaleDateString('ko-KR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            })
-        };
-
-        suggestions.unshift(newSuggestion); // 새로운 제안을 배열 맨 앞에 추가
-        localStorage.setItem('neighborhoodSuggestions', JSON.stringify(suggestions));
-
-        // 입력 폼 초기화
-        nameInput.value = '';
-        commentInput.value = '';
-
-        renderSuggestions();
+    // 1. Leaflet 기본 마커 이미지 경로 오류 방지용 설정
+    delete L.Icon.Default.prototype._getIconUrl;
+    L.Icon.Default.mergeOptions({
+        iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
+        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
     });
 
-    // 의견 삭제 처리
-    function deleteSuggestion(e) {
-        const index = e.target.getAttribute('data-index');
-        const passwordCheck = confirm("이 제안을 정말로 삭제하시겠습니까?");
-        
-        if (passwordCheck) {
-            suggestions.splice(index, 1);
-            localStorage.setItem('neighborhoodSuggestions', JSON.stringify(suggestions));
-            renderSuggestions();
-        }
-    }
+    // 2. 지도 초기화 및 기본 위치 설정 (광교풍경채어바니티 부근 중심)
+    // 위도: 37.2715, 경도: 127.0655 / 확대 배율: 15
+    const map = L.map('map').setView([37.2715, 127.0655], 15);
 
-    // 초기 화면 구성
-    renderSuggestions();
+    // 3. OpenStreetMap 타일 레이어 추가
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // 4. 단지별 위·경도 좌표 및 시세 정보 데이터 정의
+    const locations = [
+        {
+            name: "광교풍경채어바니티",
+            lat: 37.270402,
+            lng: 127.069423,
+            isCenter: true,
+            popupContent: `
+                <div class="map-popup">
+                    <h5>광교풍경채어바니티</h5>
+                    <p>경기도 용인시 기흥구 영덕동</p>
+                    <span class="center-tag">기준 단지</span>
+                </div>
+            `
+        },
+        {
+            name: "광교아이파크",
+            lat: 37.273087,
+            lng: 127.061219,
+            isCenter: false,
+            popupContent: `
+                <div class="map-popup">
+                    <h5>광교아이파크</h5>
+                    <p>평형: <strong>38평</strong></p>
+                    <p>시세: <span class="price">15.2억</span></p>
+                </div>
+            `
+        },
+        {
+            name: "광교더샵",
+            lat: 37.270696,
+            lng: 127.061016,
+            isCenter: false,
+            popupContent: `
+                <div class="map-popup">
+                    <h5>광교더샵</h5>
+                    <p>평형: <strong>37평</strong></p>
+                    <p>시세: <span class="price">13.4억</span></p>
+                </div>
+            `
+        },
+        {
+            name: "영흥숲푸르지오파크비엔아파트",
+            lat: 37.2636399,
+            lng: 127.0646109,
+            isCenter: false,
+            popupContent: `
+                <div class="map-popup">
+                    <h5>영흥숲푸르지오파크비엔</h5>
+                    <p>평형: <strong>33평</strong></p>
+                    <p>시세: <span class="price">10억</span></p>
+                </div>
+            `
+        },
+        {
+            name: "광교중흥S클래스",
+            lat: 37.282940,
+            lng: 127.058387,
+            isCenter: false,
+            popupContent: `
+                <div class="map-popup">
+                    <h5>광교중흥S클래스</h5>
+                    <p>평형: <strong>35평</strong></p>
+                    <p>시세: <span class="price">17.6억</span></p>
+                </div>
+            `
+        }
+    ];
+
+    // 5. 지도에 마커 등록 및 팝업 연결
+    locations.forEach(loc => {
+        const marker = L.marker([loc.lat, loc.lng]).addTo(map);
+        marker.bindPopup(loc.popupContent);
+        
+        // 기준 단지(광교풍경채어바니티)의 경우 페이지 로드 시 팝업을 기본으로 열어둡니다.
+        if (loc.isCenter) {
+            marker.openPopup();
+        }
+    });
 });
