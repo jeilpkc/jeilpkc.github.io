@@ -104,14 +104,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
+    const stations = [
+        {
+            name: "흥덕역",
+            lat: 37.276216566237274,
+            lng: 127.07237826190365,
+            popupContent: "<b>흥덕역 (예정)</b>"
+        },
+        {
+            name: "원천역",
+            lat: 37.270776309804106,
+            lng: 127.05999314344892,
+            popupContent: "<b>원천역 (예정)</b>"
+        }
+    ];
+
+    const stationIcon = L.divIcon({
+        html: `<div style="
+            background-color: #0052A4; 
+            color: white; 
+            font-size: 25px; 
+            font-weight: bold; 
+            text-align: center; 
+            line-height: 44px; 
+            width: 48px; 
+            height: 48px; 
+            border-radius: 50%; 
+            border: 2px solid white; 
+            box-shadow: 0px 1px 5px rgba(0,0,0,0.4);
+        ">역</div>`,
+        className: 'custom-station-icon',
+        iconSize: [24, 24],
+        iconAnchor: [12, 12]
+    });    
+
     // 5. 지도에 마커 등록 및 팝업 연결
     locations.forEach(loc => {
         const marker = L.marker([loc.lat, loc.lng]).addTo(map);
         marker.bindPopup(loc.popupContent);
-        
-        // 기준 단지(광교풍경채어바니티)의 경우 페이지 로드 시 팝업을 기본으로 열어둡니다.
         if (loc.isCenter) {
             marker.openPopup();
         }
     });
+
+    // 지도에 역 마커 등록 및 팝업 연결
+    stations.forEach(station => {
+        const stationMarker = L.marker([station.lat, station.lng], { icon: stationIcon }).addTo(map);
+        stationMarker.bindPopup(station.popupContent);
+    });    
 });
