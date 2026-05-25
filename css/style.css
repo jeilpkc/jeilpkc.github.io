@@ -321,20 +321,6 @@ footer .disclaimer {
 }
 
 /* 커뮤니티 */
-.community-hero {
-    background-color: #f8f9fa;
-    padding: 60px 0 40px;
-    text-align: center;
-}
-.community-hero h2 {
-    font-size: 2.2rem;
-    color: #1a365d;
-    margin-bottom: 10px;
-}
-.community-hero p {
-    color: #4a5568;
-    font-size: 1.1rem;
-}
 .community-container {
     max-width: 1000px;
     margin: 0 auto;
