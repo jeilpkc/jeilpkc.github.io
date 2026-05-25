@@ -134,6 +134,7 @@ nav a:hover {
 /* 공통 섹션 스타일 */
 section {
     padding: 80px 0;
+    scroll-margin-top: 50px;
 }
 
 .section-title {
