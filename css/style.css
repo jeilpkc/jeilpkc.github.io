@@ -83,24 +83,32 @@ nav a:hover {
 
 /* 히어로 섹션 */
 .hero {
-    background: linear-gradient(135deg, #1c2d3d 0%, #2a4356 100%);
-    color: #ffffff;
-    padding: 100px 0;
-    text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                    url('https://jeilpkc.github.io/assets/001-apartment.jpg');
+  background-size: cover;
+  background-position: center 15%;
+  background-repeat: no-repeat;
+  min-height: 50vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content p {
+  color: #f0f0f0;
+  font-size: 1.15rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  font-weight: 300;
+  word-break: keep-all;  
 }
 
 .hero-content h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     font-weight: 700;
-    word-break: keep-all;
-}
-
-.hero-content p {
-    font-size: 1.15rem;
-    margin-bottom: 40px;
-    opacity: 0.9;
-    font-weight: 300;
     word-break: keep-all;
 }
 
