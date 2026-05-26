@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. 지도 초기화 및 기본 위치 설정 (광교풍경채어바니티 부근 중심)
     // 위도: 37.2715, 경도: 127.0655 / 확대 배율: 15
-    const map = L.map('map').setView([37.2757148, 127.0714941], 15);
+    const isMobile = window.innerWidth <= 768;
+    const map = L.map('map', { dragging: !isMobile, scrollWheelZoom: !isMobile }).setView([37.2757148, 127.0714941], 15);
 
     // 3. OpenStreetMap 타일 레이어 추가
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
