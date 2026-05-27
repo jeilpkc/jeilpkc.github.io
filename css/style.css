@@ -133,8 +133,8 @@ nav a:hover {
 
 /* 공통 섹션 스타일 */
 section {
-    padding: 80px 0;
-    scroll-margin-top: 50px;
+    padding: 20px 0;
+    scroll-margin-top: 30px;
 }
 
 .section-title {
@@ -149,7 +149,7 @@ section {
     text-align: center;
     font-size: 1.05rem;
     color: #6c757d;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     word-break: keep-all;
 }
 
@@ -330,7 +330,7 @@ footer .disclaimer {
 }
 .map-image-box {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     background: #fff;
     padding: 20px;
     border-radius: 12px;
@@ -382,12 +382,7 @@ footer .disclaimer {
 }
 
 .community-section {
-    margin-bottom: 60px;
-}
-.community-section.border-top {
-    margin-top: 60px;
-    padding-top: 40px;
-    border-top: 1px solid #e2e8f0;
+    margin-bottom: 5px;
 }
 .community-section-title {
     font-size: 1.6rem;
