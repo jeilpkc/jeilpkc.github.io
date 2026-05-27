@@ -229,6 +229,13 @@ section {
     flex-wrap: wrap;
 }
 
+.join-buttons-map {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
 .join-btn {
     padding: 15px 30px;
     border-radius: 30px;
@@ -238,6 +245,11 @@ section {
 .join-btn.kakao {
     background-color: #fee500;
     color: #191919;
+}
+
+.join-btn.map {
+    background-color: #0066cc;
+    color: #ffffff;
 }
 
 .join-btn.kakao:hover {
