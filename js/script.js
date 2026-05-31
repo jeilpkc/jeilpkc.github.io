@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // 4. Dataset with coordinates and popups using Tailwind utility styles (Locality of Behaviour)
+    // 4. Dataset with coordinates and popups using Tailwind utility styles
     const locations = [
         {
             name: "광교풍경채어바니티",
@@ -141,4 +141,86 @@ document.addEventListener('DOMContentLoaded', () => {
         const stationMarker = L.marker([station.lat, station.lng], { icon: stationIcon }).addTo(map);
         stationMarker.bindPopup(station.popupContent);
     });    
+
+    // --- 캐러셀 제어 로직 ---
+
+    // [캐러셀 1]: 스카이뷰 및 단지도
+    let currentSlide1 = 0;
+    const track1 = document.getElementById('carousel1-track');
+    const dots1 = [
+        document.getElementById('carousel1-dot-0'),
+        document.getElementById('carousel1-dot-1')
+    ];
+
+    function updateCarousel1(index) {
+        currentSlide1 = index;
+        track1.style.transform = `translateX(-${index * 100}%)`;
+        
+        // 인디케이터 상태 변경
+        dots1.forEach((dot, idx) => {
+            if (idx === index) {
+                dot.classList.replace('bg-slate-300', 'bg-slate-800');
+            } else {
+                dot.classList.replace('bg-slate-800', 'bg-slate-300');
+            }
+        });
+    }
+
+    document.getElementById('carousel1-prev').addEventListener('click', () => {
+        const nextIndex = currentSlide1 === 0 ? 1 : currentSlide1 - 1;
+        updateCarousel1(nextIndex);
+    });
+
+    document.getElementById('carousel1-next').addEventListener('click', () => {
+        const nextIndex = currentSlide1 === 1 ? 0 : currentSlide1 + 1;
+        updateCarousel1(nextIndex);
+    });
+
+    dots1.forEach((dot, idx) => {
+        dot.addEventListener('click', () => updateCarousel1(idx));
+    });
+
+
+    // [캐러셀 2]: 시세 지도 및 교통 환경 이미지
+    let currentSlide2 = 0;
+    const track2 = document.getElementById('carousel2-track');
+    const dots2 = [
+        document.getElementById('carousel2-dot-0'),
+        document.getElementById('carousel2-dot-1')
+    ];
+
+    function updateCarousel2(index) {
+        currentSlide2 = index;
+        track2.style.transform = `translateX(-${index * 100}%)`;
+        
+        // 인디케이터 상태 변경
+        dots2.forEach((dot, idx) => {
+            if (idx === index) {
+                dot.classList.replace('bg-slate-300', 'bg-slate-800');
+            } else {
+                dot.classList.replace('bg-slate-800', 'bg-slate-300');
+            }
+        });
+
+        // 렌더링 검수: 지도가 있는 슬라이드가 노출될 때 Leaflet 레이아웃을 다시 보정합니다.
+        if (index === 0) {
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 300); // CSS 트랜지션 완료 이후 재조정 실행
+        }
+    }
+
+    document.getElementById('carousel2-prev').addEventListener('click', () => {
+        const nextIndex = currentSlide2 === 0 ? 1 : currentSlide2 - 1;
+        updateCarousel2(nextIndex);
+    });
+
+    document.getElementById('carousel2-next').addEventListener('click', () => {
+        const nextIndex = currentSlide2 === 1 ? 0 : currentSlide2 + 1;
+        updateCarousel2(nextIndex);
+    });
+
+    dots2.forEach((dot, idx) => {
+        dot.addEventListener('click', () => updateCarousel2(idx));
+    });
 });

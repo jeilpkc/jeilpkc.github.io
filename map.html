@@ -52,32 +52,83 @@
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full">
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full space-y-6">
     
-    <!-- 스카이뷰 섹션 -->
-    <section id="skyview-section" class="mb-12">
-      <h3 class="text-xl md:text-2xl font-bold text-center text-slate-800 mb-2">단지 주변 스카이뷰</h3>
-      <p class="text-center text-gray-500 mb-8 break-keep text-sm md:text-base">단지 인근 주요 개발 예정지와 주변 환경을 한눈에 확인할 수 있는 항공 사진입니다.</p>
-      <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-        <img src="assets/009-apartment-nearby-skyview.png" alt="광교풍경채어바니티 주변 항공 스카이뷰" class="max-w-full h-auto rounded-lg mx-auto">
-        <p class="mt-4 text-xs md:text-sm text-gray-500">※ 단지 주변 개발 현황 및 시설 위치를 담은 항공 분석 이미지입니다.</p>
+    <section id="visual-carousel-section">
+      <h3 class="px-4 text-xl md:text-2xl font-bold text-center text-slate-800 mb-2">단지 스카이뷰 및 단지도</h3>
+      <p class="px-4 text-center text-gray-500 mb-6 text-sm md:text-base">단지 주변 환경과 단지 내 세부 배치 슬라이드</p>
+      
+      <div class="relative bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden group">
+        <div id="carousel1-track" class="flex transition-transform duration-500 ease-out">
+          
+          <div class="w-full shrink-0 flex flex-col justify-between p-4 md:p-6 text-center">
+            <h4 class="text-lg font-bold text-slate-700 mb-3">단지 주변 스카이뷰</h4>
+            <div class="flex items-center justify-center min-h-[600px] md:min-h-[800px]">
+              <img src="assets/009-apartment-nearby-skyview.png" alt="광교풍경채어바니티 주변 항공 스카이뷰" class="max-h-[800px] w-auto rounded-lg mx-auto object-contain">
+            </div>
+            <p class="mt-4 text-xs md:text-sm text-gray-500">※ 단지 주변 개발 현황 및 주요 인프라 위치가 포함된 항공 사진입니다.</p>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col justify-between p-4 md:p-6 text-center">
+            <h4 class="text-lg font-bold text-slate-700 mb-3">단지 배치도</h4>
+            <div class="flex items-center justify-center min-h-[600px] md:min-h-[800px]">
+              <img src="assets/010-apartment-map.jpg" alt="광교풍경채어바니티 단지도" class="max-h-[800px] w-auto rounded-lg mx-auto object-contain">
+            </div>
+            <p class="mt-4 text-xs md:text-sm text-gray-500">※ 단지 내부 동호수 배치 및 주민 편의시설 안내 정보입니다.</p>
+          </div>
+
+        </div>
+
+        <button id="carousel1-prev" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow border border-gray-100 transition focus:outline-none z-10">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="carousel1-next" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow border border-gray-100 transition focus:outline-none z-10">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <div class="flex justify-center gap-1.5 pb-4">
+          <button id="carousel1-dot-0" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-colors duration-200"></button>
+          <button id="carousel1-dot-1" class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors duration-200"></button>
+        </div>
       </div>
     </section>
 
-    <!-- 단지도 섹션 -->
-    <section id="complex-map-section" class="mb-12">
-      <h3 class="text-xl md:text-2xl font-bold text-center text-slate-800 mb-6">단지도</h3>
-      <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-        <img src="assets/010-apartment-map.jpg" alt="광교풍경채어바니티 단지도" class="max-w-full h-auto rounded-lg mx-auto">
-      </div>
-    </section>      
+    <section id="map-carousel-section">
+      <h3 class="px-4 text-xl md:text-2xl font-bold text-center text-slate-800 mb-2">시세 지도 및 교통 환경</h3>
+      <p class="px-4 text-center text-gray-500 mb-6 text-sm md:text-base">삼성전자, SK하이닉스 직주근접 지도 및 광교풍경채 주변 시세지도</p>
 
-    <!-- 시세 지도 섹션 -->
-    <section id="price-map-section" class="mb-8">
-      <h3 class="text-xl md:text-2xl font-bold text-center text-slate-800 mb-2">주변 단지 시세 지도</h3>
-      <p class="text-center text-gray-500 mb-8 break-keep text-sm md:text-base">광교풍경채어바니티 인근 주요 단지의 평형별 시세 비교 데이터입니다. (2026년 05월 21일 기준)</p>
-      <!-- Leaflet map container (utilizes `#map` from CSS/JS) -->
-      <div id="map" class="w-full rounded-lg border border-gray-300 shadow-md relative z-10" style="height: 500px;"></div>
+      <div class="relative bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+        <div id="carousel2-track" class="flex transition-transform duration-500 ease-out">
+          <div class="w-full shrink-0 flex flex-col p-4 md:p-6 text-center">
+            <h4 class="text-lg font-bold text-slate-700 mb-1">직주근접 지도</h4>
+            <p class="text-xs text-gray-500 mb-3">삼성전자, SK하이닉스 인접 출퇴근권 정보입니다.</p>
+            <div class="flex items-center justify-center min-h-[800px]">
+              <img src="assets/011-skhynix-samsung-commut.png" alt="대기업 통근 안내 및 교통망" class="max-h-[800px] w-auto rounded-lg mx-auto object-contain">
+            </div>
+          </div>
+          <div class="w-full shrink-0 flex flex-col p-4 md:p-6">
+            <div class="text-center mb-3">
+              <h4 class="text-lg font-bold text-slate-700">주변 단지 시세 지도</h4>
+              <p class="text-xs text-gray-500 mt-1">인근 주요 아파트 단지의 평형별 시세입니다. (2026년 05월 21일 기준)</p>
+            </div>
+            <div id="map" class="w-full rounded-lg border border-gray-300 relative z-10" style="height: 800px;"></div>
+          </div>
+
+
+        </div>
+
+        <button id="carousel2-prev" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow border border-gray-100 transition focus:outline-none z-10">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="carousel2-next" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow border border-gray-100 transition focus:outline-none z-10">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <div class="flex justify-center gap-1.5 pb-4">
+          <button id="carousel2-dot-0" class="w-2.5 h-2.5 rounded-full bg-slate-800 transition-colors duration-200"></button>
+          <button id="carousel2-dot-1" class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors duration-200"></button>
+        </div>
+      </div>
     </section>
 
   </main>
