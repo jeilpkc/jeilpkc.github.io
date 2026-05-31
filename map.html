@@ -18,7 +18,11 @@
   <link rel="icon" type="image/svg+xml" href="assets/002-favicon.svg">
   <link rel="canonical" href="https://jeilpkc.github.io/map.html">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css?v=1.3">
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-49TQZPEJB3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -28,53 +32,63 @@
   </script>
 </head>
 
-<body>
-  <header>
-    <div class="container header-container">
-      <a href="index.html"><h1 class="logo">광교풍경채 <span>투명 공유방</span></h1></a>
+<body class="font-sans antialiased text-gray-800 bg-slate-50 flex flex-col min-h-screen">
+  
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+      <a href="index.html" class="hover:opacity-80 transition duration-200">
+        <h1 class="text-xl font-bold text-slate-800">광교풍경채 <span class="text-[#0066cc] text-lg">투명 공유방</span></h1>
+      </a>
       <nav>
-        <ul>
-          <li><a href="index.html">소개</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="map.html">지도</a></li>
-          <li><a href="community.html">커뮤니티</a></li>
-          <li><a href="index.html#join">카톡방</a></li>
+        <ul class="flex gap-5 flex-wrap justify-center">
+          <li><a href="index.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">소개</a></li>
+          <li><a href="faq.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">FAQ</a></li>
+          <li><a href="map.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">지도</a></li>
+          <li><a href="community.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">커뮤니티</a></li>
+          <li><a href="index.html#join" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">카톡방</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-      <!-- 스카이뷰 섹션 -->
-      <section id="skyview-section" class="community-section">
-        <h3 class="community-section-title">단지 주변 스카이뷰</h3>
-        <p class="community-section-subtitle">단지 인근 주요 개발 예정지와 주변 환경을 한눈에 확인할 수 있는 항공 사진입니다.</p>
-        <div class="map-image-box">
-          <img src="assets/009-apartment-nearby-skyview.png" alt="광교풍경채어바니티 주변 항공 스카이뷰">
-          <p class="image-caption">※ 단지 주변 개발 현황 및 시설 위치를 담은 항공 분석 이미지입니다.</p>
-        </div>
-      </section>
+  <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full">
+    
+    <!-- 스카이뷰 섹션 -->
+    <section id="skyview-section" class="mb-12">
+      <h3 class="text-xl md:text-2xl font-bold text-center text-slate-800 mb-2">단지 주변 스카이뷰</h3>
+      <p class="text-center text-gray-500 mb-8 break-keep text-sm md:text-base">단지 인근 주요 개발 예정지와 주변 환경을 한눈에 확인할 수 있는 항공 사진입니다.</p>
+      <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+        <img src="assets/009-apartment-nearby-skyview.png" alt="광교풍경채어바니티 주변 항공 스카이뷰" class="max-w-full h-auto rounded-lg mx-auto">
+        <p class="mt-4 text-xs md:text-sm text-gray-500">※ 단지 주변 개발 현황 및 시설 위치를 담은 항공 분석 이미지입니다.</p>
+      </div>
+    </section>
 
-    <section id="map-section" class="map-section" style="padding: 10px 0; border: none;">
-      <h3 class="section-title">단지도</h3>
-        <div class="map-image-box">
-          <img src="assets/010-apartment-map.jpg" alt="광교풍경채어바니티 단지도">
-        </div>
+    <!-- 단지도 섹션 -->
+    <section id="complex-map-section" class="mb-12">
+      <h3 class="text-xl md:text-2xl font-bold text-center text-slate-800 mb-6">단지도</h3>
+      <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+        <img src="assets/010-apartment-map.jpg" alt="광교풍경채어바니티 단지도" class="max-w-full h-auto rounded-lg mx-auto">
+      </div>
     </section>      
 
     <!-- 시세 지도 섹션 -->
-    <section id="map-section" class="map-section" style="padding: 10px 0; border: none;">
-      <h3 class="section-title">주변 단지 시세 지도</h3>
-      <p class="section-subtitle">광교풍경채어바니티 인근 주요 단지의 평형별 시세 비교 데이터입니다. (2026년 05월 21일 기준)</p>
-      <div id="map"></div>
+    <section id="price-map-section" class="mb-8">
+      <h3 class="text-xl md:text-2xl font-bold text-center text-slate-800 mb-2">주변 단지 시세 지도</h3>
+      <p class="text-center text-gray-500 mb-8 break-keep text-sm md:text-base">광교풍경채어바니티 인근 주요 단지의 평형별 시세 비교 데이터입니다. (2026년 05월 21일 기준)</p>
+      <!-- Leaflet map container (utilizes `#map` from CSS/JS) -->
+      <div id="map" class="w-full rounded-lg border border-gray-300 shadow-md relative z-10" style="height: 500px;"></div>
     </section>
 
   </main>
 
-  <footer>
-    <div class="container">
+  <!-- Footer -->
+  <footer class="bg-slate-800 text-slate-400 py-10 px-4 text-center text-sm mt-auto">
+    <div class="max-w-5xl mx-auto">
       <p>&copy; 2026 광교풍경채 투명 공유방. All rights reserved.</p>
-      <p class="disclaimer">본 사이트는 공식 입주자대표회의와 무관하며, 투명한 정보 공유와 이웃 간 자발적인 주거 환경 개선 제안을 돕기 위해 운영됩니다.</p>
+      <p class="text-xs text-slate-500 mt-4 leading-relaxed max-w-3xl mx-auto opacity-70">
+        본 사이트는 공식 입주자대표회의와 무관하며, 투명한 정보 공유와 이웃 간 자발적인 주거 환경 개선 제안을 돕기 위해 운영됩니다.
+      </p>
     </div>
   </footer>
 

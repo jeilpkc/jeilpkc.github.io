@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Leaflet 기본 마커 이미지 경로 오류 방지용 설정
+    // 1. Setup Leaflet default marker paths
     delete L.Icon.Default.prototype._getIconUrl;
     L.Icon.Default.mergeOptions({
         iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
@@ -7,17 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
     });
 
-    // 2. 지도 초기화 및 기본 위치 설정 (광교풍경채어바니티 부근 중심)
-    // 위도: 37.2715, 경도: 127.0655 / 확대 배율: 15
+    // 2. Map Initialization (Centered around Gwanggyo Punggyeongchae Urbanity)
     const isMobile = window.innerWidth <= 768;
     const map = L.map('map', { dragging: !isMobile, scrollWheelZoom: !isMobile }).setView([37.2757148, 127.0714941], 15);
 
-    // 3. OpenStreetMap 타일 레이어 추가
+    // 3. Add OpenStreetMap Tile Layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // 4. 단지별 위·경도 좌표 및 시세 정보 데이터 정의
+    // 4. Dataset with coordinates and popups using Tailwind utility styles (Locality of Behaviour)
     const locations = [
         {
             name: "광교풍경채어바니티",
@@ -25,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             lng: 127.070723,
             isCenter: true,
             popupContent: `
-                <div class="map-popup">
-                    <h5>광교풍경채어바니티</h5>
-                    <p>입주: <strong>2023년 10월</strong></p>
-                    <p>평형: <strong>34평 / 41평</strong></p>
-                    <span class="center-tag">기준 단지</span>
+                <div class="p-1 min-w-[150px]">
+                    <h5 class="text-sm font-bold text-slate-800 mb-1">광교풍경채어바니티</h5>
+                    <p class="text-xs text-gray-600 mb-0.5">입주: <strong class="font-semibold text-gray-800">2023년 10월</strong></p>
+                    <p class="text-xs text-gray-600">평형: <strong class="font-semibold text-gray-800">34평 / 41평</strong></p>
+                    <span class="inline-block bg-[#e84118] text-white text-[10px] px-1.5 py-0.5 rounded mt-1.5 font-bold">기준 단지</span>
                 </div>
             `
         },
@@ -39,11 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
             lng: 127.0563607,
             isCenter: false,
             popupContent: `
-                <div class="map-popup">
-                    <h5>광교호반베르디움</h5>
-                    <p>입주: <strong>2014년 6월</strong></p>
-                    <p>평형: <strong>34평</strong></p>
-                    <p>시세: <span class="price">12.9억</span></p>
+                <div class="p-1 min-w-[150px]">
+                    <h5 class="text-sm font-bold text-slate-800 mb-1">광교호반베르디움</h5>
+                    <p class="text-xs text-gray-600 mb-0.5">입주: <strong class="font-semibold text-gray-800">2014년 6월</strong></p>
+                    <p class="text-xs text-gray-600 mb-0.5">평형: <strong class="font-semibold text-gray-800">34평</strong></p>
+                    <p class="text-xs text-gray-600">시세: <span class="font-bold text-[#0066cc]">12.9억</span></p>
                 </div>
             `
         },        
@@ -53,11 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
             lng: 127.061219,
             isCenter: false,
             popupContent: `
-                <div class="map-popup">
-                    <h5>광교아이파크</h5>
-                    <p>입주: <strong>2018년 9월</strong></p>
-                    <p>평형: <strong>38평</strong></p>
-                    <p>시세: <span class="price">15.2억</span></p>
+                <div class="p-1 min-w-[150px]">
+                    <h5 class="text-sm font-bold text-slate-800 mb-1">광교아이파크</h5>
+                    <p class="text-xs text-gray-600 mb-0.5">입주: <strong class="font-semibold text-gray-800">2018년 9월</strong></p>
+                    <p class="text-xs text-gray-600 mb-0.5">평형: <strong class="font-semibold text-gray-800">38평</strong></p>
+                    <p class="text-xs text-gray-600">시세: <span class="font-bold text-[#0066cc]">15.2억</span></p>
                 </div>
             `
         },
@@ -67,11 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
             lng: 127.061016,
             isCenter: false,
             popupContent: `
-                <div class="map-popup">
-                    <h5>광교더샵</h5>
-                    <p>입주: <strong>2018년 8월</strong></p>
-                    <p>평형: <strong>37평</strong></p>
-                    <p>시세: <span class="price">13.4억</span></p>
+                <div class="p-1 min-w-[150px]">
+                    <h5 class="text-sm font-bold text-slate-800 mb-1">광교더샵</h5>
+                    <p class="text-xs text-gray-600 mb-0.5">입주: <strong class="font-semibold text-gray-800">2018년 8월</strong></p>
+                    <p class="text-xs text-gray-600 mb-0.5">평형: <strong class="font-semibold text-gray-800">37평</strong></p>
+                    <p class="text-xs text-gray-600">시세: <span class="font-bold text-[#0066cc]">13.4억</span></p>
                 </div>
             `
         },
@@ -81,11 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
             lng: 127.06768,
             isCenter: false,
             popupContent: `
-                <div class="map-popup">
-                    <h5>영흥숲푸르지오파크비엔</h5>
-                    <p>입주: <strong>2023년 6월</strong></p>
-                    <p>평형: <strong>33평</strong></p>
-                    <p>시세: <span class="price">10억</span></p>
+                <div class="p-1 min-w-[150px]">
+                    <h5 class="text-sm font-bold text-slate-800 mb-1">영흥숲푸르지오파크비엔</h5>
+                    <p class="text-xs text-gray-600 mb-0.5">입주: <strong class="font-semibold text-gray-800">2023년 6월</strong></p>
+                    <p class="text-xs text-gray-600 mb-0.5">평형: <strong class="font-semibold text-gray-800">33평</strong></p>
+                    <p class="text-xs text-gray-600">시세: <span class="font-bold text-[#0066cc]">10억</span></p>
                 </div>
             `
         },
@@ -95,11 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
             lng: 127.058387,
             isCenter: false,
             popupContent: `
-                <div class="map-popup">
-                    <h5>광교중흥S클래스</h5>
-                    <p>입주: <strong>2019년 5월</strong></p>
-                    <p>평형: <strong>35평</strong></p>
-                    <p>시세: <span class="price">17.6억</span></p>
+                <div class="p-1 min-w-[150px]">
+                    <h5 class="text-sm font-bold text-slate-800 mb-1">광교중흥S클래스</h5>
+                    <p class="text-xs text-gray-600 mb-0.5">입주: <strong class="font-semibold text-gray-800">2019년 5월</strong></p>
+                    <p class="text-xs text-gray-600 mb-0.5">평형: <strong class="font-semibold text-gray-800">35평</strong></p>
+                    <p class="text-xs text-gray-600">시세: <span class="font-bold text-[#0066cc]">17.6억</span></p>
                 </div>
             `
         }
@@ -110,36 +109,25 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "흥덕역",
             lat: 37.276216566237274,
             lng: 127.07237826190365,
-            popupContent: "<b>흥덕역 (예정)</b>"
+            popupContent: "<b class='text-sm font-bold text-slate-800'>흥덕역 (예정)</b>"
         },
         {
             name: "원천역",
             lat: 37.270776309804106,
             lng: 127.05999314344892,
-            popupContent: "<b>원천역 (예정)</b>"
+            popupContent: "<b class='text-sm font-bold text-slate-800'>원천역 (예정)</b>"
         }
     ];
 
+    // Station Custom DivIcon styled with inline utility classes
     const stationIcon = L.divIcon({
-        html: `<div style="
-            background-color: #0052A4; 
-            color: white; 
-            font-size: 25px; 
-            font-weight: bold; 
-            text-align: center; 
-            line-height: 44px; 
-            width: 48px; 
-            height: 48px; 
-            border-radius: 50%; 
-            border: 2px solid white; 
-            box-shadow: 0px 1px 5px rgba(0,0,0,0.4);
-        ">역</div>`,
+        html: `<div class="bg-[#0052A4] text-white text-[15px] font-bold text-center leading-[44px] w-12 h-12 rounded-full border-2 border-white shadow-[0px_1px_5px_rgba(0,0,0,0.4)]">역</div>`,
         className: 'custom-station-icon',
         iconSize: [24, 24],
         iconAnchor: [12, 12]
     });    
 
-    // 5. 지도에 마커 등록 및 팝업 연결
+    // 5. Register Location Markers
     locations.forEach(loc => {
         const marker = L.marker([loc.lat, loc.lng]).addTo(map);
         marker.bindPopup(loc.popupContent);
@@ -148,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 지도에 역 마커 등록 및 팝업 연결
+    // Register Station Markers
     stations.forEach(station => {
         const stationMarker = L.marker([station.lat, station.lng], { icon: stationIcon }).addTo(map);
         stationMarker.bindPopup(station.popupContent);

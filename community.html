@@ -17,7 +17,11 @@
   <title>광교풍경채 커뮤니티</title>
   <link rel="icon" type="image/svg+xml" href="assets/002-favicon.svg">
   <link rel="canonical" href="https://jeilpkc.github.io/community.html">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css?v=1.3">
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-49TQZPEJB3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -27,103 +31,106 @@
   </script>
 </head>
 
-<body>
-  <header>
-    <div class="container header-container">
-      <a href="index.html"><h1 class="logo">광교풍경채 <span>투명 공유방</span></h1></a>
+<body class="font-sans antialiased text-gray-800 bg-slate-50 flex flex-col min-h-screen">
+  
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+      <a href="index.html" class="hover:opacity-80 transition duration-200">
+        <h1 class="text-xl font-bold text-slate-800">광교풍경채 <span class="text-[#0066cc] text-lg">투명 공유방</span></h1>
+      </a>
       <nav>
-        <ul>
-          <li><a href="index.html">소개</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="map.html">지도</a></li>
-          <li><a href="community.html">커뮤니티</a></li>
-          <li><a href="index.html#join">카톡방</a></li>
+        <ul class="flex gap-5 flex-wrap justify-center">
+          <li><a href="index.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">소개</a></li>
+          <li><a href="faq.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">FAQ</a></li>
+          <li><a href="map.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">지도</a></li>
+          <li><a href="community.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">커뮤니티</a></li>
+          <li><a href="index.html#join" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">카톡방</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="community-container">
-    <!-- Zone 1: 에듀·컬처 커뮤니티 (사파리 월드 놀이터 우측) -->
-    <div class="community-section">
-      <h3 class="community-section-title">단지식당·도서관·독서실·키즈룸 커뮤니티</h3>
-      <p class="community-section-subtitle">[위치: 사파리 월드 놀이터 우측]</p>
+  <main class="max-w-4xl mx-auto px-4 py-8 md:py-12 flex-grow w-full">
+    
+    <!-- Zone 1: 에듀·컬처 커뮤니티 -->
+    <div class="mb-16">
+      <h3 class="text-xl md:text-2xl font-bold text-slate-800 text-center mb-1">단지식당·도서관·독서실·키즈룸 커뮤니티</h3>
+      <p class="text-sm text-gray-500 text-center mb-8">[위치: 사파리 월드 놀이터 우측]</p>
       
-      <div class="map-image-box">
-        <img src="assets/006-community-one.jpg" alt="에듀·컬처 커뮤니티 시설 안내도 (B1F)" />
+      <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 text-center mb-8">
+        <img src="assets/006-community-one.jpg" alt="에듀·컬처 커뮤니티 시설 안내도 (B1F)" class="max-w-full h-auto rounded-lg mx-auto" />
       </div>
 
-      <div class="floor-guide">
-        <div class="floor-card">
-          <span class="floor-badge">B1F</span>
-          <h4>단지식당·도서관·독서실·키즈룸</h4>
-          <p class="card-desc">학업, 독서 및 보육과 이웃 간 커뮤니케이션을 위한 차분한 교육·문화 환경이 조성되어 있습니다.</p>
-          <div class="facility-tags">
-            <span class="facility-tag">독서실 (남/여)</span>
-            <span class="facility-tag">프라이빗 독서실</span>
-            <span class="facility-tag">스터디룸</span>
-            <span class="facility-tag">작은도서관</span>
-            <span class="facility-tag">다함께돌봄센터</span>
-            <span class="facility-tag">키즈룸</span>
-            <span class="facility-tag">클럽라운지(단지식당)</span>
-            <span class="facility-tag">임대관리센터</span>
-            <span class="facility-tag">관리사무소</span>
-          </div>
+      <div class="bg-white border-l-4 border-blue-600 rounded-r-xl p-6 md:p-8 shadow-sm border border-gray-200">
+        <span class="inline-block bg-blue-600 text-white px-3 py-1 rounded text-xs font-bold mb-4">B1F</span>
+        <h4 class="text-lg md:text-xl font-bold text-slate-800 mb-3">단지식당·도서관·독서실·키즈룸</h4>
+        <p class="text-sm text-gray-500 mb-6 leading-relaxed">학업, 독서 및 보육과 이웃 간 커뮤니케이션을 위한 차분한 교육·문화 환경이 조성되어 있습니다.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">독서실 (남/여)</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">프라이빗 독서실</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">스터디룸</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">작은도서관</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">다함께돌봄센터</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">키즈룸</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">클럽라운지(단지식당)</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">임대관리센터</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">관리사무소</span>
         </div>
       </div>
     </div>
 
-    <!-- Zone 2: 스포츠·웰니스 커뮤니티 (101동 인근 지하층) -->
-    <div class="community-section border-top">
-      <h3 class="community-section-title">스포츠·웰니스 커뮤니티</h3>
-      <p class="community-section-subtitle">[위치: 101동 인근 B2층]</p>
+    <!-- Zone 2: 스포츠·웰니스 커뮤니티 -->
+    <div class="border-t border-gray-200 pt-12">
+      <h3 class="text-xl md:text-2xl font-bold text-slate-800 text-center mb-1">스포츠·웰니스 커뮤니티</h3>
+      <p class="text-sm text-gray-500 text-center mb-8">[위치: 101동 인근 B2층]</p>
 
       <!-- 스포츠 B1F -->
-      <div class="map-image-box">
-        <img src="assets/007-community-two-b1f.jpg" alt="스포츠·웰니스 커뮤니티 시설 안내도 (B1F)" />
+      <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 text-center mb-8">
+        <img src="assets/007-community-two-b1f.jpg" alt="스포츠·웰니스 커뮤니티 시설 안내도 (B1F)" class="max-w-full h-auto rounded-lg mx-auto" />
       </div>
 
-      <div class="floor-guide space-top space-bottom">
-        <div class="floor-card">
-          <span class="floor-badge">B1F</span>
-          <h4>골프·헬스 존 (지하1층)</h4>
-          <p class="card-desc">건강한 신체 활동과 체력 단련을 위한 골프 및 헬스 시설이 위치해 있습니다.</p>
-          <div class="facility-tags">
-            <span class="facility-tag">휘트니스 센터 (Gym)</span>
-            <span class="facility-tag">골프연습장</span>
-            <span class="facility-tag">스크린골프</span>
-          </div>
+      <div class="bg-white border-l-4 border-blue-600 rounded-r-xl p-6 md:p-8 shadow-sm border border-gray-200 mb-12">
+        <span class="inline-block bg-blue-600 text-white px-3 py-1 rounded text-xs font-bold mb-4">B1F</span>
+        <h4 class="text-lg md:text-xl font-bold text-slate-800 mb-3">골프·헬스 존 (지하1층)</h4>
+        <p class="text-sm text-gray-500 mb-6 leading-relaxed">건강한 신체 활동과 체력 단련을 위한 골프 및 헬스 시설이 위치해 있습니다.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">휘트니스 센터 (Gym)</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">골프연습장</span>
+          <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">스크린골프</span>
         </div>
       </div>
 
       <!-- 스포츠 B2F -->
-      <div class="map-image-box space-top-large">
-        <img src="assets/008-community-two-b2f.jpg" alt="수영장·사우나·체육관·스포츠 커뮤니티 시설 안내도 (B2F)" />
+      <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 text-center mb-8">
+        <img src="assets/008-community-two-b2f.jpg" alt="수영장·사우나·체육관·스포츠 커뮤니티 시설 안내도 (B2F)" class="max-w-full h-auto rounded-lg mx-auto" />
       </div>
 
-      <div class="floor-guide space-top">
-        <div class="floor-card b2f-card">
-          <span class="floor-badge b2f-badge">B2F</span>
-          <h4>수영장·사우나·체육관·스포츠 존 (지하2층)</h4>
-          <p class="card-desc">날씨와 계절에 상관없이 즐길 수 있는 대형 수영장과 사우나, 실내 체육 시설이 완비되어 있습니다.</p>
-          <div class="facility-tags">
-            <span class="facility-tag b2f-tag">수영장 (성인풀)</span>
-            <span class="facility-tag b2f-tag">유아풀</span>
-            <span class="facility-tag b2f-tag">사우나 (남/여)</span>
-            <span class="facility-tag b2f-tag">다목적체육관</span>
-            <span class="facility-tag b2f-tag">탁구장</span>
-            <span class="facility-tag b2f-tag">스크린야구장</span>
-            <span class="facility-tag b2f-tag">GX룸</span>
-            <span class="facility-tag b2f-tag">필라테스룸</span>
-          </div>
+      <div class="bg-white border-l-4 border-teal-600 rounded-r-xl p-6 md:p-8 shadow-sm border border-gray-200">
+        <span class="inline-block bg-teal-600 text-white px-3 py-1 rounded text-xs font-bold mb-4">B2F</span>
+        <h4 class="text-lg md:text-xl font-bold text-slate-800 mb-3">수영장·사우나·체육관·스포츠 존 (지하2층)</h4>
+        <p class="text-sm text-gray-500 mb-6 leading-relaxed">날씨와 계절에 상관없이 즐길 수 있는 대형 수영장과 사우나, 실내 체육 시설이 완비되어 있습니다.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-teal-50 text-teal-800 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">수영장 (성인풀)</span>
+          <span class="bg-teal-50 text-teal-800 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">유아풀</span>
+          <span class="bg-teal-50 text-teal-800 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">사우나 (남/여)</span>
+          <span class="bg-teal-50 text-teal-800 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">다목적체육관</span>
+          <span class="bg-teal-50 text-teal-800 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">탁구장</span>
+          <span class="bg-teal-50 text-teal-800 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">스크린야구장</span>
+          <span class="bg-teal-50 text-teal-800 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">GX룸</span>
+          <span class="bg-teal-50 text-teal-800 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium">필라테스룸</span>
         </div>
       </div>
     </div>
   </main>
-  <footer>
-    <div class="container">
+
+  <!-- Footer -->
+  <footer class="bg-slate-800 text-slate-400 py-10 px-4 text-center text-sm mt-auto">
+    <div class="max-w-5xl mx-auto">
       <p>&copy; 2026 광교풍경채 투명 공유방. All rights reserved.</p>
-      <p class="disclaimer">본 사이트는 공식 입주자대표회의와 무관하며, 투명한 정보 공유와 이웃 간 자발적인 주거 환경 개선 제안을 돕기 위해 운영됩니다.</p>
+      <p class="text-xs text-slate-500 mt-4 leading-relaxed max-w-3xl mx-auto opacity-70">
+        본 사이트는 공식 입주자대표회의와 무관하며, 투명한 정보 공유와 이웃 간 자발적인 주거 환경 개선 제안을 돕기 위해 운영됩니다.
+      </p>
     </div>
   </footer>
 </body>
