@@ -157,12 +157,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 커서 스타일 지정 및 모바일 터치 액션 제어 설정
     trackElement.style.cursor = "grab";
-
-    // 중요: 모바일에서 가로 스와이프 도중 pointercancel 이벤트가 일어나는 브라우저 기본 제스처를 무력화합니다.
     trackElement.style.touchAction = "pan-y";
 
     // 포인터를 누를 때 (터치 시작 및 마우스 클릭 시작 대응)
     trackElement.addEventListener("pointerdown", (e) => {
+      // "크게 보기" 버튼 클릭 시 스와이프 로직이 이벤트를 가로채 포인터를 뺏어가지 않도록 예외 처리
+      if (e.target.closest(".view-full-btn")) return;
+
       // 마우스 오른쪽이나 휠 클릭은 무시하고 왼쪽 클릭만 허용
       if (e.pointerType === "mouse" && e.button !== 0) return;
 
@@ -207,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // 시스템 중단 이벤트 처리 (알림 팝업 출현 및 모바일 스와이프 제어 무력화 방지)
+    // 시스템 중단 이벤트 처리
     trackElement.addEventListener("pointercancel", (e) => {
       isDragging = false;
       trackElement.style.cursor = "grab";
