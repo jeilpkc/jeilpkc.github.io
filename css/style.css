@@ -7,26 +7,12 @@
 }
 
 #map {
+    height: 500px;
     width: 100%;
-    height: 350px; /* Default height for mobile viewports */
     border-radius: 8px;
     border: 1px solid #ced4da;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     z-index: 1; /* Prevent overlap with the navigation header */
-}
-
-/* Medium screens (Tablets) */
-@media (min-width: 640px) {
-    #map {
-        height: 550px;
-    }
-}
-
-/* Large screens (Desktops) */
-@media (min-width: 1024px) {
-    #map {
-        height: 800px;
-    }
 }
 
 /* Custom layout wrapper for Leaflet map popups */

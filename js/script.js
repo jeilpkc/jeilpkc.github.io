@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 지도가 노출되는 슬라이드(index 1)일 때 Leaflet 렌더링 버그 보정
+        // 렌더링 검수: 지도가 있는 슬라이드가 노출될 때 Leaflet 레이아웃을 다시 보정합니다.
         if (index === 1) {
             setTimeout(() => {
                 map.invalidateSize();
@@ -224,61 +224,44 @@ document.addEventListener('DOMContentLoaded', () => {
         dot.addEventListener('click', () => updateCarousel2(idx));
     });
 
-
-    // --- 이미지 크게 보기 모달 제어 로직 ---
+    // --- 이미지 전체화면 모달 제어 로직 ---
     const imageModal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
-    const closeModalBtn = document.getElementById('close-modal');
+    const modalDownload = document.getElementById('modal-download');
+    const closeModal = document.getElementById('close-modal');
+    const viewFullButtons = document.querySelectorAll('.view-full-btn');
 
-    function openModal(src) {
-        modalImg.src = src;
-        imageModal.classList.remove('hidden');
-        
-        // 투명도 변경 애니메이션을 위해 렌더링 스레드를 양보한 후 opacity 추가
-        setTimeout(() => {
-            imageModal.classList.remove('opacity-0');
-            imageModal.classList.add('opacity-100');
-        }, 10);
-        
-        // 모달 활성화 시 본문 백그라운드 스크롤 방지
-        document.body.style.overflow = 'hidden';
-    }
+    if (imageModal && modalImg && closeModal) {
+        // 모달 열기
+        viewFullButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const imageSource = button.getAttribute('data-src');
+                if (imageSource) {
+                    modalImg.src = imageSource;
+                    if (modalDownload) {
+                        modalDownload.href = imageSource;
+                    }
+                    imageModal.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden'); // 뒷배경 스크롤 방지
+                }
+            });
+        });
 
-    function closeModal() {
-        imageModal.classList.remove('opacity-100');
-        imageModal.classList.add('opacity-0');
-        
-        // CSS Transition 속도가 유지되는 300ms 이후 숨김 처리 진행
-        setTimeout(() => {
+        // 모달 닫기 함수
+        const hideFullscreenModal = () => {
             imageModal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden'); // 뒷배경 스크롤 허용
             modalImg.src = '';
-        }, 300);
-        
-        document.body.style.overflow = '';
+        };
+
+        closeModal.addEventListener('click', hideFullscreenModal);
+
+        // 이미지 외 바깥 영역 터치시 모달 닫기
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal || e.target.id === 'modal-img-container') {
+                hideFullscreenModal();
+            }
+        });
     }
-
-    // 모바일 전용 크게 보기 버튼 클릭 리스너 연결
-    document.querySelectorAll('.open-modal-btn').forEach(button => {
-        button.addEventListener('click', (event) => {
-            event.stopPropagation();
-            const src = button.getAttribute('data-src');
-            openModal(src);
-        });
-    });
-
-    // 데스크톱 및 직관적인 터치를 위한 슬라이드 이미지 클릭 처리
-    document.querySelectorAll('.modal-trigger').forEach(image => {
-        image.addEventListener('click', () => {
-            openModal(image.src);
-        });
-    });
-
-    // 닫기 버튼 및 외부 영역 클릭 시 모달 제거
-    closeModalBtn.addEventListener('click', closeModal);
-    imageModal.addEventListener('click', (event) => {
-        // 내부 정렬 요소인 이미지 본판 이외 영역 클릭 시에만 닫히도록 예외 처리
-        if (event.target !== modalImg) {
-            closeModal();
-        }
-    });
 });
