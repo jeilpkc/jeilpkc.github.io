@@ -202,8 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 렌더링 검수: 지도가 있는 슬라이드가 노출될 때 Leaflet 레이아웃을 다시 보정합니다.
-        if (index === 0) {
+        // 지도가 노출되는 슬라이드(index 1)일 때 Leaflet 렌더링 버그 보정
+        if (index === 1) {
             setTimeout(() => {
                 map.invalidateSize();
             }, 300); // CSS 트랜지션 완료 이후 재조정 실행
@@ -222,5 +222,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dots2.forEach((dot, idx) => {
         dot.addEventListener('click', () => updateCarousel2(idx));
+    });
+
+
+    // --- 이미지 크게 보기 모달 제어 로직 ---
+    const imageModal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeModalBtn = document.getElementById('close-modal');
+
+    function openModal(src) {
+        modalImg.src = src;
+        imageModal.classList.remove('hidden');
+        
+        // 투명도 변경 애니메이션을 위해 렌더링 스레드를 양보한 후 opacity 추가
+        setTimeout(() => {
+            imageModal.classList.remove('opacity-0');
+            imageModal.classList.add('opacity-100');
+        }, 10);
+        
+        // 모달 활성화 시 본문 백그라운드 스크롤 방지
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        imageModal.classList.remove('opacity-100');
+        imageModal.classList.add('opacity-0');
+        
+        // CSS Transition 속도가 유지되는 300ms 이후 숨김 처리 진행
+        setTimeout(() => {
+            imageModal.classList.add('hidden');
+            modalImg.src = '';
+        }, 300);
+        
+        document.body.style.overflow = '';
+    }
+
+    // 모바일 전용 크게 보기 버튼 클릭 리스너 연결
+    document.querySelectorAll('.open-modal-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const src = button.getAttribute('data-src');
+            openModal(src);
+        });
+    });
+
+    // 데스크톱 및 직관적인 터치를 위한 슬라이드 이미지 클릭 처리
+    document.querySelectorAll('.modal-trigger').forEach(image => {
+        image.addEventListener('click', () => {
+            openModal(image.src);
+        });
+    });
+
+    // 닫기 버튼 및 외부 영역 클릭 시 모달 제거
+    closeModalBtn.addEventListener('click', closeModal);
+    imageModal.addEventListener('click', (event) => {
+        // 내부 정렬 요소인 이미지 본판 이외 영역 클릭 시에만 닫히도록 예외 처리
+        if (event.target !== modalImg) {
+            closeModal();
+        }
     });
 });
