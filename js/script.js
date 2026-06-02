@@ -155,8 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
       img.addEventListener("dragstart", (e) => e.preventDefault());
     });
 
-    // 사용자가 잡아서 끌 수 있음을 시각화하기 위해 grab 커서 적용
+    // 커서 스타일 지정 및 모바일 터치 액션 제어 설정
     trackElement.style.cursor = "grab";
+
+    // 중요: 모바일에서 가로 스와이프 도중 pointercancel 이벤트가 일어나는 브라우저 기본 제스처를 무력화합니다.
+    trackElement.style.touchAction = "pan-y";
 
     // 포인터를 누를 때 (터치 시작 및 마우스 클릭 시작 대응)
     trackElement.addEventListener("pointerdown", (e) => {
@@ -169,7 +172,9 @@ document.addEventListener("DOMContentLoaded", () => {
       trackElement.style.cursor = "grabbing";
 
       // 포인터 캡처 설정을 통해 트랙 경계를 벗어나도 드래그 릴리즈가 정상 수신되도록 함
-      trackElement.setPointerCapture(e.pointerId);
+      try {
+        trackElement.setPointerCapture(e.pointerId);
+      } catch (err) {}
     });
 
     // 포인터를 뗄 때 (터치 끝 및 마우스 클릭 해제 대응)
@@ -202,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // 시스템 중단 이벤트 처리 (알림 팝업 출현 등)
+    // 시스템 중단 이벤트 처리 (알림 팝업 출현 및 모바일 스와이프 제어 무력화 방지)
     trackElement.addEventListener("pointercancel", (e) => {
       isDragging = false;
       trackElement.style.cursor = "grab";
@@ -305,7 +310,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 캐러셀 2 데스크탑 & 모바일 통합 스와이프 활성화
-  // (데스크탑 지도 자체는 Leaflet 내부의 이벤트 캡처에 의해 지도 이동 동작이 먼저 우선 적용되고, 그 외 영역 및 다른 슬라이드는 드래그 스와이프가 적용됩니다.)
   if (track2) {
     enableTouchAndMouseSwipe(
       track2,
