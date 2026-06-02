@@ -142,6 +142,76 @@ document.addEventListener("DOMContentLoaded", () => {
     stationMarker.bindPopup(station.popupContent);
   });
 
+  // --- 공통 터치/마우스 스와이프 등록 헬퍼 함수 (Pointer API 활용) ---
+  function enableTouchAndMouseSwipe(trackElement, onSwipeLeft, onSwipeRight) {
+    let startX = 0;
+    let startY = 0;
+    let isDragging = false;
+    const swipeThreshold = 50; // 스와이프로 인식할 최소 거리(px)
+
+    // 데스크탑 브라우저의 기본 이미지 드래깅(고스트 드래그) 현상을 방지
+    const images = trackElement.querySelectorAll("img");
+    images.forEach((img) => {
+      img.addEventListener("dragstart", (e) => e.preventDefault());
+    });
+
+    // 사용자가 잡아서 끌 수 있음을 시각화하기 위해 grab 커서 적용
+    trackElement.style.cursor = "grab";
+
+    // 포인터를 누를 때 (터치 시작 및 마우스 클릭 시작 대응)
+    trackElement.addEventListener("pointerdown", (e) => {
+      // 마우스 오른쪽이나 휠 클릭은 무시하고 왼쪽 클릭만 허용
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+
+      startX = e.clientX;
+      startY = e.clientY;
+      isDragging = true;
+      trackElement.style.cursor = "grabbing";
+
+      // 포인터 캡처 설정을 통해 트랙 경계를 벗어나도 드래그 릴리즈가 정상 수신되도록 함
+      trackElement.setPointerCapture(e.pointerId);
+    });
+
+    // 포인터를 뗄 때 (터치 끝 및 마우스 클릭 해제 대응)
+    trackElement.addEventListener("pointerup", (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      trackElement.style.cursor = "grab";
+
+      try {
+        trackElement.releasePointerCapture(e.pointerId);
+      } catch (err) {}
+
+      const endX = e.clientX;
+      const endY = e.clientY;
+
+      const distanceX = endX - startX;
+      const distanceY = endY - startY;
+
+      // 세로 스크롤 움직임보다 가로 드래그 움직임이 지배적일 때만 동작하도록 제어
+      if (Math.abs(distanceX) > Math.abs(distanceY)) {
+        if (Math.abs(distanceX) > swipeThreshold) {
+          if (distanceX > 0) {
+            // 오른쪽으로 끌기 -> 이전 슬라이드
+            onSwipeRight();
+          } else {
+            // 왼쪽으로 끌기 -> 다음 슬라이드
+            onSwipeLeft();
+          }
+        }
+      }
+    });
+
+    // 시스템 중단 이벤트 처리 (알림 팝업 출현 등)
+    trackElement.addEventListener("pointercancel", (e) => {
+      isDragging = false;
+      trackElement.style.cursor = "grab";
+      try {
+        trackElement.releasePointerCapture(e.pointerId);
+      } catch (err) {}
+    });
+  }
+
   // --- 캐러셀 제어 로직 ---
 
   // [캐러셀 1]: 스카이뷰 및 단지도
@@ -176,6 +246,23 @@ document.addEventListener("DOMContentLoaded", () => {
   dots1.forEach((dot, idx) => {
     dot.addEventListener("click", () => updateCarousel1(idx));
   });
+
+  // 캐러셀 1 데스크탑 & 모바일 통합 스와이프 활성화
+  if (track1) {
+    enableTouchAndMouseSwipe(
+      track1,
+      () => {
+        // Swipe Left (Next)
+        const nextIndex = currentSlide1 === 1 ? 0 : currentSlide1 + 1;
+        updateCarousel1(nextIndex);
+      },
+      () => {
+        // Swipe Right (Prev)
+        const nextIndex = currentSlide1 === 0 ? 1 : currentSlide1 - 1;
+        updateCarousel1(nextIndex);
+      },
+    );
+  }
 
   // [캐러셀 2]: 시세 지도 및 교통 환경 이미지
   let currentSlide2 = 0;
@@ -216,6 +303,24 @@ document.addEventListener("DOMContentLoaded", () => {
   dots2.forEach((dot, idx) => {
     dot.addEventListener("click", () => updateCarousel2(idx));
   });
+
+  // 캐러셀 2 데스크탑 & 모바일 통합 스와이프 활성화
+  // (데스크탑 지도 자체는 Leaflet 내부의 이벤트 캡처에 의해 지도 이동 동작이 먼저 우선 적용되고, 그 외 영역 및 다른 슬라이드는 드래그 스와이프가 적용됩니다.)
+  if (track2) {
+    enableTouchAndMouseSwipe(
+      track2,
+      () => {
+        // Swipe Left (Next)
+        const nextIndex = currentSlide2 === 1 ? 0 : currentSlide2 + 1;
+        updateCarousel2(nextIndex);
+      },
+      () => {
+        // Swipe Right (Prev)
+        const nextIndex = currentSlide2 === 0 ? 1 : currentSlide2 - 1;
+        updateCarousel2(nextIndex);
+      },
+    );
+  }
 
   // --- 이미지 전체화면 모달 제어 로직 ---
   const imageModal = document.getElementById("image-modal");
