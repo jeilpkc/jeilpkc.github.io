@@ -32,7 +32,33 @@
 </head>
 
 <body class="font-sans antialiased text-gray-800 bg-slate-50 flex flex-col min-h-screen">
-  
+  <!-- Desktop Left Banner (Only visible on screens >= 1280px) -->
+  <aside
+    class="hidden xl:flex fixed left-[15px] 2xl:left-[calc(50%-840px)] top-28 w-[120px] 2xl:w-[160px] h-[660px] bg-slate-100 border border-dashed border-slate-300 rounded-lg shadow-sm z-40 items-center justify-center p-2 text-center">
+    <a href="#" class="w-full h-full flex flex-col justify-center items-center gap-2">
+      <img src="assets/banner-left.jpg" alt="좌측배너" class="w-full h-full object-cover rounded hidden"
+        onerror="this.style.display='none';">
+      <div class="flex flex-col items-center justify-center text-slate-400">
+        <span class="text-xl mb-1">📢</span>
+        <span class="text-xs font-semibold">광교풍경채<br>투명공유방</span>
+        <span class="text-[10px] text-slate-400 mt-1">좌측</span>
+      </div>
+    </a>
+  </aside>
+
+  <!-- Desktop Right Banner (Only visible on screens >= 1280px) -->
+  <aside
+    class="hidden xl:flex fixed right-[15px] 2xl:right-[calc(50%-840px)] top-28 w-[120px] 2xl:w-[160px] h-[660px] bg-slate-100 border border-dashed border-slate-300 rounded-lg shadow-sm z-40 items-center justify-center p-2 text-center">
+    <a href="#" class="w-full h-full flex flex-col justify-center items-center gap-2">
+      <img src="assets/banner-right.jpg" alt="우측배너" class="w-full h-full object-cover rounded hidden"
+        onerror="this.style.display='none';">
+      <div class="flex flex-col items-center justify-center text-slate-400">
+        <span class="text-xl mb-1">📢</span>
+        <span class="text-xs font-semibold">광교풍경채<br>투명공유방</span>
+        <span class="text-[10px] text-slate-400 mt-1">우측</span>
+      </div>
+    </a>
+  </aside>  
   <!-- Header -->
   <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
@@ -94,6 +120,18 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Mobile Section Banner 1 (Only visible below 1280px) -->
+    <div class="xl:hidden bg-slate-100 border-y border-gray-200 py-3 px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <a href="#"
+          class="relative flex items-center justify-center min-h-[100px] bg-white hover:bg-gray-50 border border-dashed border-gray-300 rounded-lg overflow-hidden transition">
+          <img src="assets/banner-mobile-1.jpg" alt="광고 영역"
+            class="w-full h-auto max-h-[100px] rounded mx-auto object-cover hidden" onerror="this.style.display='none';">
+          <span class="block text-xs text-slate-400 font-semibold">📢<br>광교풍경채<br>투명공유방</span>
+        </a>
+      </div>
+    </div>    
 
     <!-- 2. 타입별 분양가 내역 -->
     <h2 class="text-lg md:text-xl font-bold text-blue-900 border-b-2 border-blue-900 pb-2 mt-10 mb-4">2. 대표 타입별 확정 분양가 및 부담금 내역</h2>
@@ -186,6 +224,18 @@
       </p>
     </div>
   </main>
+
+  <!-- Mobile Section Banner 1 (Only visible below 1280px) -->
+  <div class="xl:hidden bg-slate-100 border-y border-gray-200 py-3 px-4 text-center">
+    <div class="max-w-3xl mx-auto">
+      <a href="#"
+        class="relative flex items-center justify-center min-h-[100px] bg-white hover:bg-gray-50 border border-dashed border-gray-300 rounded-lg overflow-hidden transition">
+        <img src="assets/banner-mobile-1.jpg" alt="광고 영역"
+          class="w-full h-auto max-h-[100px] rounded mx-auto object-cover hidden" onerror="this.style.display='none';">
+        <span class="block text-xs text-slate-400 font-semibold">📢<br>광교풍경채<br>투명공유방</span>
+      </a>
+    </div>
+  </div>  
 
   <!-- Footer -->
   <footer class="bg-slate-800 text-slate-400 py-10 px-4 text-center text-sm mt-auto">

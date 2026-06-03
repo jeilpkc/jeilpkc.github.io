@@ -12,7 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jeilpkc.github.io/">
   <meta property="og:title" content="광교풍경채 알아보기! 반도체 직주근접">
-  <meta property="og:description" content="민간임대 확정분양 주요 FAQ, 커뮤니티, 주변 시설 및 호재 지도를 확인할 수 있습니다. 23년 10월 준공, 1766세대 (34평 1382세대, 41평 298대)">
+  <meta property="og:description"
+    content="민간임대 확정분양 주요 FAQ, 커뮤니티, 주변 시설 및 호재 지도를 확인할 수 있습니다. 23년 10월 준공, 1766세대 (34평 1382세대, 41평 298대)">
   <meta property="og:image" content="https://jeilpkc.github.io/assets/001-apartment.jpg">
   <title>광교풍경채 알아보기! 반도체 직주근접</title>
   <link rel="icon" type="image/svg+xml" href="assets/002-favicon.svg">
@@ -31,7 +32,35 @@
   </script>
 </head>
 
-<body class="font-sans antialiased text-gray-800 bg-slate-50 flex flex-col min-h-screen">
+<body class="font-sans antialiased text-gray-800 bg-slate-50 flex flex-col min-h-screen relative">
+
+  <!-- Desktop Left Banner (Only visible on screens >= 1280px) -->
+  <aside
+    class="hidden xl:flex fixed left-[15px] 2xl:left-[calc(50%-840px)] top-28 w-[120px] 2xl:w-[160px] h-[660px] bg-slate-100 border border-dashed border-slate-300 rounded-lg shadow-sm z-40 items-center justify-center p-2 text-center">
+    <a href="#" class="w-full h-full flex flex-col justify-center items-center gap-2">
+      <img src="assets/banner-left.jpg" alt="좌측배너" class="w-full h-full object-cover rounded hidden"
+        onerror="this.style.display='none';">
+      <div class="flex flex-col items-center justify-center text-slate-400">
+        <span class="text-xl mb-1">📢</span>
+        <span class="text-xs font-semibold">광교풍경채<br>투명공유방</span>
+        <span class="text-[10px] text-slate-400 mt-1">좌측</span>
+      </div>
+    </a>
+  </aside>
+
+  <!-- Desktop Right Banner (Only visible on screens >= 1280px) -->
+  <aside
+    class="hidden xl:flex fixed right-[15px] 2xl:right-[calc(50%-840px)] top-28 w-[120px] 2xl:w-[160px] h-[660px] bg-slate-100 border border-dashed border-slate-300 rounded-lg shadow-sm z-40 items-center justify-center p-2 text-center">
+    <a href="#" class="w-full h-full flex flex-col justify-center items-center gap-2">
+      <img src="assets/banner-right.jpg" alt="우측배너" class="w-full h-full object-cover rounded hidden"
+        onerror="this.style.display='none';">
+      <div class="flex flex-col items-center justify-center text-slate-400">
+        <span class="text-xl mb-1">📢</span>
+        <span class="text-xs font-semibold">광교풍경채<br>투명공유방</span>
+        <span class="text-[10px] text-slate-400 mt-1">우측</span>
+      </div>
+    </a>
+  </aside>
 
   <!-- Header -->
   <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -73,8 +102,20 @@
     </div>
   </section>
 
+  <!-- Mobile Section Banner 1 (Only visible below 1280px) -->
+  <div class="xl:hidden bg-slate-100 border-y border-gray-200 py-3 px-4 text-center">
+    <div class="max-w-3xl mx-auto">
+      <a href="#"
+        class="relative flex items-center justify-center min-h-[100px] bg-white hover:bg-gray-50 border border-dashed border-gray-300 rounded-lg overflow-hidden transition">
+        <img src="assets/banner-mobile-1.jpg" alt="광고 영역"
+          class="w-full h-auto max-h-[100px] rounded mx-auto object-cover hidden" onerror="this.style.display='none';">
+        <span class="block text-xs text-slate-400 font-semibold">📢<br>광교풍경채<br>투명공유방</span>
+      </a>
+    </div>
+  </div>
+
   <!-- Developments Section -->
-  <section id="developments" class="py-16 md:py-20 bg-white">
+  <section id="developments" class="py-16 md:py-5 bg-white">
     <div class="max-w-5xl mx-auto px-4">
       <h3 class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-2">핵심 정보와 주요 호재</h3>
       <p class="text-center text-gray-800 max-w-2xl mx-auto mb-12 break-keep text-sm md:text-base">
@@ -106,14 +147,27 @@
         </div>
       </div>
 
+
       <div class="flex justify-center mt-10">
         <a href="map.html"
           class="inline-flex items-center gap-2 bg-[#0066cc] hover:bg-blue-700 text-white px-7 py-3.5 rounded-full font-semibold text-base transition shadow">
           🗺️ 스카이뷰 및 주변시세 지도
         </a>
       </div>
+
+    </div>
+    <!-- Mobile Section Banner 2 (Only visible below 1280px) -->
+    <div class="xl:hidden mt-10 max-w-3xl mx-auto text-center">
+      <a href="#"
+        class="relative flex items-center justify-center min-h-[100px] bg-slate-100 hover:bg-slate-200 border border-dashed border-gray-300 rounded-lg overflow-hidden transition">
+        <img src="assets/banner-mobile-2.jpg" alt="광고 영역"
+          class="w-full h-auto max-h-[100px] rounded mx-auto object-cover hidden" onerror="this.style.display='none';">
+        <span class="block text-xs text-slate-400 font-semibold">📢<br>광교풍경채<br>투명공유방</span>
+      </a>
     </div>
   </section>
+
+
 
   <!-- Join Section -->
   <section id="join" class="py-16 md:py-20 bg-gray-100 text-center">
