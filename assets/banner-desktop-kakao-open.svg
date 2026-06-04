@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 660" width="100%" height="100%">
+  <!-- Definitions for filters -->
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="160" height="660" fill="#FFFFFF" rx="8" />
+
+  <!-- KakaoTalk Icon Header -->
+  <g transform="translate(55, 50)">
+    <path d="M25 0C11.193 0 0 8.954 0 20c0 7.1 4.615 13.364 11.233 16.732l-2.316 8.513c-.15.551.482.98.934.62l10.151-8.113C21.722 39.86 23.336 40 25 40c13.807 0 25-8.954 25-20S38.807 0 25 0z" fill="#FEE500"/>
+    <text x="25" y="24" fill="#3C1E1E" font-size="12" font-family="system-ui, -apple-system, sans-serif" font-weight="900" text-anchor="middle" letter-spacing="-0.5">TALK</text>
+  </g>
+
+  <!-- Stylized Apartment Graphics -->
+  <g transform="translate(43, 130)">
+    <!-- Small Building -->
+    <rect x="5" y="25" width="22" height="65" rx="3" fill="#CBD5E1"/>
+    <!-- Main Building -->
+    <rect x="32" y="5" width="26" height="85" rx="3" fill="#475569"/>
+    
+    <!-- Windows for Small Building -->
+    <rect x="10" y="35" width="4" height="6" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="18" y="35" width="4" height="6" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="10" y="47" width="4" height="6" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="18" y="47" width="4" height="6" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="10" y="59" width="4" height="6" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="18" y="59" width="4" height="6" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="10" y="71" width="4" height="6" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="18" y="71" width="4" height="6" rx="1" fill="#FFFFFF" opacity="0.9"/>
+
+    <!-- Windows for Main Building -->
+    <rect x="38" y="15" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="47" y="15" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="38" y="29" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="47" y="29" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="38" y="43" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="47" y="43" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="38" y="57" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="47" y="57" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="38" y="71" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="47" y="71" width="5" height="7" rx="1" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="40" y1="260" x2="120" y2="260" stroke="#E2E8F0" stroke-width="1" />
+
+  <!-- Typography -->
+  <g font-family="system-ui, -apple-system, sans-serif" text-anchor="middle">
+    <!-- Main Title Group -->
+    <text x="80" y="300" fill="#475569" font-size="14" font-weight="600" letter-spacing="-0.5">광교풍경채</text>
+    <text x="80" y="332" fill="#0F172A" font-size="20" font-weight="800" letter-spacing="-0.5">투명공유방</text>
+    
+    <!-- Accent Line -->
+    <rect x="65" y="352" width="30" height="3" rx="1.5" fill="#FEE500" />
+
+    <!-- Subtitles / Info -->
+    <text x="80" y="388" fill="#64748B" font-size="14" font-weight="500" letter-spacing="-0.3">입주민을 위한</text>
+    <text x="80" y="408" fill="#64748B" font-size="14" font-weight="500" letter-spacing="-0.3">실시간 정보 공유</text>
+    
+    <text x="80" y="445" fill="#94A3B8" font-size="14" font-weight="500" letter-spacing="-0.3">#호재공유 #정보</text>
+  </g>
+
+  <!-- Bottom Call To Action Button -->
+  <g transform="translate(15, 540)" filter="url(#shadow)">
+    <!-- Yellow Kakao Button -->
+    <rect width="130" height="44" rx="22" fill="#FEE500" />
+    <text x="65" y="26" fill="#191919" font-size="14" font-family="system-ui, -apple-system, sans-serif" font-weight="700" text-anchor="middle" letter-spacing="-0.3">오픈채팅 참여하기</text>
+  </g>
+</svg>
