@@ -58,7 +58,7 @@
     <rect x="65" y="352" width="30" height="3" rx="1.5" fill="#FEE500" />
 
     <!-- Subtitles / Info -->
-    <text x="80" y="388" fill="#64748B" font-size="14" font-weight="500" letter-spacing="-0.3">입주민을 위한</text>
+    <text x="80" y="388" fill="#64748B" font-size="14" font-weight="500" letter-spacing="-0.3">매수자 | 매도자</text>
     <text x="80" y="408" fill="#64748B" font-size="14" font-weight="500" letter-spacing="-0.3">실시간 정보 공유</text>
     
     <text x="80" y="445" fill="#94A3B8" font-size="14" font-weight="500" letter-spacing="-0.3">#호재공유 #정보</text>
