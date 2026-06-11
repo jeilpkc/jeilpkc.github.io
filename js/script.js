@@ -310,22 +310,6 @@ document.addEventListener("DOMContentLoaded", () => {
     dot.addEventListener("click", () => updateCarousel2(idx));
   });
 
-  // 캐러셀 2 데스크탑 & 모바일 통합 스와이프 활성화
-  if (track2) {
-    enableTouchAndMouseSwipe(
-      track2,
-      () => {
-        // Swipe Left (Next)
-        const nextIndex = currentSlide2 === 1 ? 0 : currentSlide2 + 1;
-        updateCarousel2(nextIndex);
-      },
-      () => {
-        // Swipe Right (Prev)
-        const nextIndex = currentSlide2 === 0 ? 1 : currentSlide2 - 1;
-        updateCarousel2(nextIndex);
-      },
-    );
-  }
 
   // --- 이미지 전체화면 모달 제어 로직 ---
   const imageModal = document.getElementById("image-modal");
