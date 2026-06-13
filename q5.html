@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="광교 풍경채 어바니티 타입별 매물 수량 및 매매/전세/월세 가격 변동 추이를 실시간 그래프로 제공합니다.">
+  <meta name="keywords" content="광교풍경채어바니티, 매물수량, 가격추이, 매매, 전세, 월세, 시각화, 부동산 통계, 이동평균">
+  <meta name="author" content="광교풍경채 투명공유방">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="naver-site-verification" content="02f1d2320af2231dae1516101f982f30d9b54d64" />
+  <meta name="google-site-verification" content="4tv2a6oHU7ILI0ojtUG7Ut1Gt9RztHcK4uNn3XYdwiI" />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jeilpkc.github.io/q5.html">
+  <meta property="og:title" content="광교 풍경채 어바니티 Q5. 타입별 매물 수량 및 가격 변동 추이">
+  <meta property="og:description" content="광교 풍경채 어바니티 타입별 매물 수량 및 매매/전세/월세 가격 변동 추이를 실시간 그래프로 제공합니다.">
+  <meta property="og:image" content="https://jeilpkc.github.io/assets/001-apartment.jpg">
+  <title>광교 풍경채 어바니티 Q5. 타입별 매물 수량 및 가격 변동 추이</title>
+  <link class="favicon" rel="icon" type="image/svg+xml" href="assets/002-favicon.svg">
+  <link rel="canonical" href="https://jeilpkc.github.io/q5.html">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css?v=1.8">
+  
+  <!-- ApexCharts CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <!-- Data Script -->
+  <script src="assets/apartment_data.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-49TQZPEJB3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-49TQZPEJB3');
+  </script>
+</head>
+
+<body class="font-sans antialiased text-gray-800 bg-slate-50 flex flex-col min-h-screen">
+  <!-- Desktop Left Banner (Only visible on screens >= 1280px) -->
+  <aside
+    class="hidden xl:flex fixed left-[15px] 2xl:left-[calc(50%-840px)] top-28 w-[120px] 2xl:w-[160px] h-[660px] bg-slate-100 border border-dashed border-slate-300 rounded-lg shadow-sm z-40 items-center justify-center p-2 text-center">
+    <a href="https://open.kakao.com/o/pOlGIDvi" class="w-full h-full flex flex-col justify-center items-center gap-2" target="_blank">
+      <img src="assets/banner-desktop-kakao-open.svg" alt="좌측배너" class="w-full h-full object-cover rounded hidden"
+        onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
+        onerror="this.style.display='none';">
+      
+      <!-- 이미지 로드에 실패했을 때만 표시되는 영역 -->
+      <div class="flex flex-col items-center justify-center text-slate-400">
+        <span class="text-xl mb-1">📢</span>
+        <span class="text-xs font-semibold">광교풍경채<br>투명공유방</span>
+        <span class="text-[10px] text-slate-400 mt-1">좌측</span>
+      </div>
+    </a>
+  </aside>
+
+  <!-- Desktop Right Banner (Only visible on screens >= 1280px) -->
+  <aside
+    class="hidden xl:flex fixed right-[15px] 2xl:right-[calc(50%-840px)] top-28 w-[120px] 2xl:w-[160px] h-[660px] bg-slate-100 border border-dashed border-slate-300 rounded-lg shadow-sm z-40 items-center justify-center p-2 text-center">
+    <a href="https://open.kakao.com/o/pOlGIDvi" class="w-full h-full flex flex-col justify-center items-center gap-2" target="_blank">
+      <img src="assets/banner-desktop-kakao-open.svg" alt="우측배너" class="w-full h-full object-cover rounded hidden"
+        onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
+        onerror="this.style.display='none';">
+      
+      <!-- 이미지 로드에 실패했을 때만 표시되는 영역 -->
+      <div class="flex flex-col items-center justify-center text-slate-400">
+        <span class="text-xl mb-1">📢</span>
+        <span class="text-xs font-semibold">광교풍경채<br>투명공유방</span>
+        <span class="text-[10px] text-slate-400 mt-1">우측</span>
+      </div>
+    </a>
+  </aside>  
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+      <a href="index.html" class="hover:opacity-80 transition duration-200">
+        <h1 class="text-xl font-bold text-slate-800">광교풍경채 <span class="text-[#0066cc] text-lg">어바니티</span></h1>
+      </a>
+      <nav>
+        <ul class="flex gap-5 flex-wrap justify-center">
+          <li><a href="index.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">소개</a></li>
+          <li><a href="faq.html" class="text-sm font-semibold text-[#0066cc] transition">FAQ</a></li>
+          <li><a href="map.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">지도</a></li>
+          <li><a href="community.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">커뮤니티</a></li>
+          <li><a href="kakao.html" class="text-sm font-medium text-gray-600 hover:text-[#0066cc] transition">카톡방</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8 md:py-12 flex-grow w-full">
+    <div class="mb-6">
+      <a href="faq.html" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:underline">
+        ← FAQ 목록으로 돌아가기
+      </a>
+    </div>
+    
+    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 leading-snug">Q5. 광교 풍경채 어바니티 타입별 매물 수량 및 가격 변동 추이</h3>
+    
+    <p class="text-sm md:text-base text-gray-700 leading-relaxed mb-6">
+      네이버 부동산에 등록된 광교 풍경채 어바니티의 타입별 매물 데이터 수치입니다. (가격 범위는 7일 이동 평균)
+
+    <!-- Interactive Dashboard Card -->
+    <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 md:p-6 mb-8">
+      <!-- Filters Area -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6 border-b border-gray-100 pb-4">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
+          <!-- Type Select -->
+          <div class="w-full sm:w-auto">
+            <label for="typeLabelSelect" class="block text-xs font-semibold text-gray-500 mb-1">타입 선택</label>
+            <select id="typeLabelSelect"
+              class="block w-full sm:w-44 rounded-md border-gray-200 bg-slate-50 text-sm p-2.5 border font-medium focus:border-blue-500 focus:ring-blue-500 text-gray-700">
+              <!-- Options loaded via Javascript -->
+            </select>
+          </div>
+
+          <!-- Graph Type Select -->
+          <div class="w-full sm:w-auto">
+            <label for="graphTypeSelect" class="block text-xs font-semibold text-gray-500 mb-1">그래프 구분</label>
+            <select id="graphTypeSelect"
+              class="block w-full sm:w-44 rounded-md border-gray-200 bg-slate-50 text-sm p-2.5 border font-medium focus:border-blue-500 focus:ring-blue-500 text-gray-700">
+              <option value="quantity">1. 매물 수량 추이</option>
+              <option value="price">2. 가격 범위 추이</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Price Tabs (Visible only in Price mode) -->
+        <div id="tabsContainerWrapper" class="hidden border-b border-gray-200 w-full md:w-auto flex justify-start md:justify-end">
+          <nav class="flex space-x-2" aria-label="Tabs" id="tabs-container">
+            <button onclick="switchTab('maemae')" id="tab-maemae"
+              class="tab-btn border-blue-600 text-blue-600 whitespace-nowrap py-2 px-3 border-b-2 font-semibold text-sm transition">
+              매매
+            </button>
+            <button onclick="switchTab('jeonse')" id="tab-jeonse"
+              class="tab-btn border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-3 border-b-2 font-medium text-sm transition">
+              전세
+            </button>
+            <button onclick="switchTab('wolse')" id="tab-wolse"
+              class="tab-btn border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-3 border-b-2 font-medium text-sm transition">
+              월세
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Chart Screen -->
+      <div class="relative bg-slate-50 rounded-lg p-3 md:p-4 border border-slate-100 min-h-[300px]">
+        <div id="chart"></div>
+      </div>
+    </div>
+
+    <!-- Mobile Section Banner 1 -->
+    <div class="xl:hidden bg-slate-100 border-y border-gray-200 py-3 px-4 text-center my-6">
+      <div class="max-w-3xl mx-auto">
+        <a href="https://open.kakao.com/o/pOlGIDvi"
+          class="relative flex items-center justify-center min-h-[100px] bg-white hover:bg-gray-50 border border-dashed border-gray-300 rounded-lg overflow-hidden transition" target="_blank">
+          <img src="assets/banner-mobile-kakao-open.svg" alt="광고 영역"
+            class="w-full h-auto max-h-[100px] rounded mx-auto object-cover hidden" 
+            onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
+            onerror="this.style.display='none';">
+          
+          <span class="block text-xs text-slate-400 font-semibold">📢<br>광교풍경채<br>투명공유방</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-800 text-slate-400 py-10 px-4 text-center text-sm mt-auto">
+    <div class="max-w-5xl mx-auto">
+      <p>&copy; 2026 광교풍경채 투명공유방. All rights reserved.</p>
+      <p class="text-xs text-slate-500 mt-4 leading-relaxed max-w-3xl mx-auto opacity-70">
+        본 사이트는 공식 입주자대표회의와 무관하며, 투명한 정보 공유와 이웃 간 자발적인 주거 환경 개선 제안을 돕기 위해 운영됩니다.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Chart Interactive Controller Script -->
+  <script>
+    // Global State
+    let currentTab = 'maemae'; // Options: 'maemae', 'jeonse', 'wolse'
+    let currentTypeLabel = null;
+    let currentGraphType = 'quantity'; // Default set to 'quantity'
+    let chartInstance = null;
+
+    // Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof rawData !== 'undefined' && rawData.length > 0) {
+        initializeFilters();
+        renderChart();
+        updateTabVisibility();
+      } else {
+        document.getElementById('chart').innerHTML = `
+            <div class="text-center p-6 bg-red-50 rounded-lg border border-red-200">
+                <p class="text-red-600 text-sm font-semibold">
+                    에러: 데이터 원본('rawData')을 찾을 수 없습니다.
+                </p>
+                <p class="text-xs text-red-500 mt-1">
+                    'assets/apartment_data.js' 파일이 정상 경로에 존재하며 유효한 데이터를 포함하고 있는지 점검해 주십시오.
+                </p>
+            </div>
+        `;
+      }
+    });
+
+    // Parse unique type_labels to populate selector
+    function initializeFilters() {
+      const selectEl = document.getElementById('typeLabelSelect');
+      selectEl.innerHTML = '';
+
+      const uniqueTypes = [...new Set(rawData.map(item => item.type_label))]
+        .sort((a, b) => String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' }));
+
+      uniqueTypes.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = `${type} 타입`;
+        selectEl.appendChild(option);
+      });
+
+      // Set default type_label
+      if (uniqueTypes.length > 0) {
+        currentTypeLabel = String(uniqueTypes[0]);
+        selectEl.value = currentTypeLabel;
+      }
+
+      // Event listener for type label selection
+      selectEl.addEventListener('change', (e) => {
+        currentTypeLabel = String(e.target.value);
+        updateChartData();
+      });
+
+      // Event listener for graph type selection
+      document.getElementById('graphTypeSelect').addEventListener('change', (e) => {
+        currentGraphType = e.target.value;
+        updateTabVisibility();
+        updateChartData();
+      });
+    }
+
+    // Controls the visibility of Maemae/Jeonse/Wolse tabs based on the graph type
+    function updateTabVisibility() {
+      const tabsWrapper = document.getElementById('tabsContainerWrapper');
+      if (tabsWrapper) {
+        if (currentGraphType === 'quantity') {
+          tabsWrapper.classList.add('hidden');
+        } else {
+          tabsWrapper.classList.remove('hidden');
+        }
+      }
+    }
+
+    // Helper to safely parse numbers and calculate a true 7-day moving average
+    function calculateMovingAverage(seriesData, windowDays = 7) {
+      const windowMs = windowDays * 24 * 60 * 60 * 1000;
+
+      return seriesData.map((point, index) => {
+        const currentX = point.x;
+        let sum = 0;
+        let count = 0;
+
+        for (let i = index; i >= 0; i--) {
+          if (currentX - seriesData[i].x <= windowMs) {
+            const rawVal = seriesData[i].y;
+
+            if (rawVal !== null && rawVal !== undefined && rawVal !== '') {
+              const cleanVal = typeof rawVal === 'string'
+                ? rawVal.replace(/,/g, '')
+                : rawVal;
+
+              const val = parseFloat(cleanVal);
+
+              if (!isNaN(val)) {
+                sum += val;
+                count++;
+              }
+            }
+          } else {
+            break;
+          }
+        }
+
+        const averageY = count > 0 ? Number((sum / count).toFixed(3)) : null;
+        return { x: currentX, y: averageY };
+      });
+    }
+
+    // Handles changing the active tab and styling the navigation
+    function switchTab(tabName) {
+      currentTab = tabName;
+      const tabs = ['maemae', 'jeonse', 'wolse'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (btn) {
+          if (t === tabName) {
+            btn.className = "tab-btn border-blue-600 text-blue-600 whitespace-nowrap py-2 px-3 border-b-2 font-semibold text-sm transition";
+          } else {
+            btn.className = "tab-btn border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-3 border-b-2 font-medium text-sm transition";
+          }
+        }
+      });
+
+      updateChartData();
+    }
+
+    // Helper to extract and smooth series data based on selected parameters
+    function getFilteredSeriesData() {
+      const filteredData = rawData
+        .filter(item => String(item.type_label) === String(currentTypeLabel))
+        .filter(item => item.timestamp && !isNaN(new Date(item.timestamp).getTime()))
+        .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+      if (currentGraphType === 'price') {
+        const minRaw = [];
+        const defaultRaw = [];
+        const maxRaw = [];
+
+        filteredData.forEach(item => {
+          const xVal = new Date(item.timestamp).getTime();
+          minRaw.push({ x: xVal, y: item[`${currentTab}_min`] });
+          defaultRaw.push({ x: xVal, y: item[`${currentTab}_default`] });
+          maxRaw.push({ x: xVal, y: item[`${currentTab}_max`] });
+        });
+        const minSmoothed = calculateMovingAverage(minRaw, 7);
+        const defaultSmoothed = calculateMovingAverage(defaultRaw, 7);
+        const maxSmoothed = calculateMovingAverage(maxRaw, 7);
+        return [
+          { name: '최저가', data: minSmoothed, color: '#10B981' },
+          { name: '기준가', data: defaultSmoothed, color: '#3B82F6' },
+          { name: '최고가', data: maxSmoothed, color: '#EF4444' }
+        ];
+      } else {
+        // Combined quantity series: Maemae, Jeonse, and Wolse together
+        const maemaeQty = [];
+        const jeonseQty = [];
+        const wolseQty = [];
+
+        filteredData.forEach(item => {
+          const xVal = new Date(item.timestamp).getTime();
+          maemaeQty.push({ x: xVal, y: item['maemae_qty'] });
+          jeonseQty.push({ x: xVal, y: item['jeonse_qty'] });
+          wolseQty.push({ x: xVal, y: item['wolse_qty'] });
+        });
+
+        return [
+          { name: '매매 수량', data: maemaeQty, color: '#3B82F6' }, // Blue
+          { name: '전세 수량', data: jeonseQty, color: '#10B981' }, // Green
+          { name: '월세 수량', data: wolseQty, color: '#F59E0B' }  // Amber
+        ];
+      }
+    }
+
+    // Creates the base chart instance
+    function renderChart() {
+      const chartContainer = document.querySelector("#chart");
+      if (!chartContainer) return;
+      const responsiveHeight = window.innerWidth >= 768 ? 600 : 360;
+
+      const options = {
+        series: getFilteredSeriesData(),
+        chart: {
+          type: 'line',
+          height: responsiveHeight,
+          fontFamily: 'inherit',
+          zoom: {
+            enabled: true
+          },
+          toolbar: {
+            show: true
+          }
+        },
+        stroke: {
+          curve: 'smooth',
+          width: 3
+        },
+        grid: {
+          borderColor: '#f1f1f1',
+        },
+        xaxis: {
+          type: 'datetime',
+          labels: {
+            datetimeUTC: false,
+            format: 'yy-MM-dd'
+          },
+          title: {
+            text: '날짜',
+            style: { color: '#6B7280', fontWeight: 600 }
+          }
+        },
+        yaxis: {
+          title: {
+            text: '수량 (건수)',
+            style: { color: '#6B7280', fontWeight: 600 }
+          },
+          labels: {
+            formatter: function (value) {
+              return value !== undefined && value !== null
+                ? value.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 1 })
+                : '';
+            }
+          }
+        },
+        tooltip: {
+          x: {
+            format: 'yyyy-MM-dd'
+          }
+        }
+      };
+
+      chartInstance = new ApexCharts(chartContainer, options);
+      chartInstance.render();
+      updateChartData();
+    }
+
+    // Updates existing chart dynamically, adjusting titles and values as needed
+    function updateChartData() {
+      if (chartInstance) {
+        const isPrice = currentGraphType === 'price';
+        const yAxisTitle = isPrice
+          ? '금액 (만원 / 월세액)'
+          : '수량 (건수)';
+        
+        const seriesData = getFilteredSeriesData();
+
+        // Extract all valid numeric y-values from the active series to calculate chart boundaries
+        const allYValues = seriesData
+          .flatMap(series => series.data)
+          .map(point => point.y)
+          .filter(y => y !== null && y !== undefined && !isNaN(y));
+
+        let calculatedMin = undefined;
+        let calculatedMax = undefined;
+
+        if (allYValues.length > 0) {
+          const rawMin = Math.min(...allYValues);
+          const rawMax = Math.max(...allYValues);
+
+          calculatedMin = rawMin - Math.abs(rawMin) * 0.1;
+          calculatedMax = rawMax + Math.abs(rawMax) * 0.1;
+
+          if (calculatedMin < 100) {
+            calculatedMin = 0;
+          }
+        }
+
+        chartInstance.updateOptions({
+          series: seriesData,
+          yaxis: {
+            min: calculatedMin,
+            max: calculatedMax,
+            title: {
+              text: yAxisTitle,
+              style: { color: '#6B7280', fontWeight: 600 }
+            },
+            labels: {
+              formatter: function (value) {
+                return value !== undefined && value !== null
+                  ? value.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 1 })
+                  : '';
+              }
+            }
+          }
+        });
+      }
+    }
+  </script>
+</body>
+
+</html>
