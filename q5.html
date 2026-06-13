@@ -326,9 +326,9 @@
         const defaultSmoothed = calculateMovingAverage(defaultRaw, 7);
         const maxSmoothed = calculateMovingAverage(maxRaw, 7);
         return [
-          { name: '최저가', data: minSmoothed, color: '#10B981' },
+          { name: '최고가', data: maxSmoothed, color: '#EF4444' },
           { name: '기준가', data: defaultSmoothed, color: '#3B82F6' },
-          { name: '최고가', data: maxSmoothed, color: '#EF4444' }
+          { name: '최저가', data: minSmoothed, color: '#10B981' }
         ];
       } else {
         // Combined quantity series: Maemae, Jeonse, and Wolse together
