@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Explicitly tell Tailwind to scan your HTML files in the root folder */
+@source "./*.html";
