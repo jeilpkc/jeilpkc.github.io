@@ -1,5 +1,6 @@
 const SUPABASE_URL = 'https://idwgqfdixjfssloonyii.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_FShlMYhEQFhtseSO7Eroew_2dXcp9Bp';
+
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 async function logVisitor() {
