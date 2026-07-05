@@ -51,7 +51,7 @@ const COMPONENTS = {
     <aside
       class="hidden xl:flex fixed right-[15px] 2xl:right-[calc(50%-840px)] top-28 w-[120px] 2xl:w-[160px] h-[660px] bg-slate-100 border border-dashed border-slate-300 rounded-lg shadow-sm z-40 items-center justify-center p-2 text-center">
       <a href="https://open.kakao.com/o/pOlGIDvi" class="w-full h-full flex flex-col justify-center items-center gap-2" target="_blank">
-        <img src="assets/banner-desktop-kakao-open.svg" alt="우측배너" class="w-full h-full object-cover rounded hidden"
+        <img src="assets/banner-desktop-ad-request.svg" alt="우측배너" class="w-full h-full object-cover rounded hidden"
           onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
           onerror="this.style.display='none';">
         <div class="flex flex-col items-center justify-center text-slate-400">
@@ -62,12 +62,26 @@ const COMPONENTS = {
       </a>
     </aside>
   `,
-  mobileBanner: `
+  mobileBannerTypeOne: `
     <div class="xl:hidden bg-slate-100 border-y border-gray-200 py-3 px-4 text-center">
       <div class="max-w-3xl mx-auto">
         <a href="https://open.kakao.com/o/pOlGIDvi"
           class="relative flex items-center justify-center min-h-[100px] bg-white hover:bg-gray-50 border border-dashed border-gray-300 rounded-lg overflow-hidden transition" target="_blank">
           <img src="assets/banner-mobile-kakao-open.svg" alt="광고 영역"
+            class="w-full h-auto max-h-[100px] rounded mx-auto object-cover hidden" 
+            onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
+            onerror="this.style.display='none';">
+          <span class="block text-xs text-slate-400 font-semibold">📢<br>광교풍경채<br>투명공유방</span>
+        </a>
+      </div>
+    </div>
+  `,
+  mobileBannerTypeTwo: `
+    <div class="xl:hidden bg-slate-100 border-y border-gray-200 py-3 px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <a href="https://open.kakao.com/o/pOlGIDvi"
+          class="relative flex items-center justify-center min-h-[100px] bg-white hover:bg-gray-50 border border-dashed border-gray-300 rounded-lg overflow-hidden transition" target="_blank">
+          <img src="assets/banner-mobile-ad-request.svg" alt="광고 영역"
             class="w-full h-auto max-h-[100px] rounded mx-auto object-cover hidden" 
             onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
             onerror="this.style.display='none';">
@@ -97,7 +111,11 @@ function initLayout() {
   // Inject All Mobile Banners
   const mobileBannerPlaceholders = document.querySelectorAll('[id^="mobile-banner-"]');
   mobileBannerPlaceholders.forEach(placeholder => {
-    placeholder.outerHTML = COMPONENTS.mobileBanner;
+    if (placeholder.id === 'mobile-banner-2') {
+      placeholder.outerHTML = COMPONENTS.mobileBannerTypeTwo;
+    } else {
+      placeholder.outerHTML = COMPONENTS.mobileBannerTypeOne;
+    }
   });
 
   // Handle Active Navigation
