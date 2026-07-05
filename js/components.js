@@ -50,7 +50,7 @@ const COMPONENTS = {
     <!-- Desktop Right Banner -->
     <aside
       class="hidden xl:flex fixed right-[15px] 2xl:right-[calc(50%-840px)] top-28 w-[120px] 2xl:w-[160px] h-[660px] bg-slate-100 border border-dashed border-slate-300 rounded-lg shadow-sm z-40 items-center justify-center p-2 text-center">
-      <a href="https://open.kakao.com/o/pOlGIDvi" class="w-full h-full flex flex-col justify-center items-center gap-2" target="_blank">
+      <a href="https://forms.gle/7jatoLRCiNjXbVPb7" class="w-full h-full flex flex-col justify-center items-center gap-2" target="_blank">
         <img src="assets/banner-desktop-ad-request.svg" alt="우측배너" class="w-full h-full object-cover rounded hidden"
           onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
           onerror="this.style.display='none';">
