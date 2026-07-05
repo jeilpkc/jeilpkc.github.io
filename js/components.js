@@ -79,7 +79,7 @@ const COMPONENTS = {
   mobileBannerTypeTwo: `
     <div class="xl:hidden bg-slate-100 border-y border-gray-200 py-3 px-4 text-center">
       <div class="max-w-3xl mx-auto">
-        <a href="https://open.kakao.com/o/pOlGIDvi"
+        <a href="https://forms.gle/7jatoLRCiNjXbVPb7"
           class="relative flex items-center justify-center min-h-[100px] bg-white hover:bg-gray-50 border border-dashed border-gray-300 rounded-lg overflow-hidden transition" target="_blank">
           <img src="assets/banner-mobile-ad-request.svg" alt="광고 영역"
             class="w-full h-auto max-h-[100px] rounded mx-auto object-cover hidden" 
